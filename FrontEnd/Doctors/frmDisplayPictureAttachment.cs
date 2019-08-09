@@ -54,5 +54,16 @@ namespace ClinicCat.FrontEnd.Doctors
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex > -1)
+            {
+                new frmAttachAdd(dt.Rows[listBox1.SelectedIndex][0].ToString()).ShowDialog();
+            }
+            else {
+                MessageBox.Show("من فضلك اختر فحص");
+            }
+        }
     }
 }
