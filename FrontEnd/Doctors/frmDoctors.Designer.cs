@@ -49,6 +49,7 @@
             this.txtNextVisitNotes = new System.Windows.Forms.TextBox();
             this.txtCurrentVisitNotes = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dtpReceptionTime = new System.Windows.Forms.DateTimePicker();
             this.dtpReserveTime = new System.Windows.Forms.DateTimePicker();
             this.chkEnableScanTime = new System.Windows.Forms.CheckBox();
@@ -60,7 +61,6 @@
             this.txtReserveTime = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.ofdChoosePicture = new System.Windows.Forms.OpenFileDialog();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -203,6 +203,7 @@
             this.txtPatientID.ReadOnly = true;
             this.txtPatientID.Size = new System.Drawing.Size(149, 30);
             this.txtPatientID.TabIndex = 1;
+            this.txtPatientID.Text = "1";
             // 
             // txtPatientName
             // 
@@ -268,7 +269,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(428, 26);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(114, 22);
+            this.label9.Size = new System.Drawing.Size(113, 22);
             this.label9.TabIndex = 1;
             this.label9.Text = "ملاحظات الزيارة";
             // 
@@ -277,7 +278,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(84, 26);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(165, 22);
+            this.label3.Size = new System.Drawing.Size(164, 22);
             this.label3.TabIndex = 3;
             this.label3.Text = "ملاحظات الزيارة القادمة";
             // 
@@ -345,6 +346,14 @@
             this.groupBox5.TabIndex = 24;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "بيانات الحجز";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(164, 131);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.TabIndex = 33;
+            this.pictureBox1.TabStop = false;
             // 
             // dtpReceptionTime
             // 
@@ -482,14 +491,6 @@
             this.ofdChoosePicture.Filter = "JPG Files|*.jpg|All Files|*.*";
             this.ofdChoosePicture.RestoreDirectory = true;
             this.ofdChoosePicture.Title = "Choose Video File";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(164, 131);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.TabIndex = 33;
-            this.pictureBox1.TabStop = false;
             // 
             // frmDoctors
             // 

@@ -8,10 +8,14 @@ namespace ClinicCat.FrontEnd.Patients
     public partial class frmPatientsCRUD : Form
     {
         private frmPatients frmPatients;
-
         private List<string> parameters = new List<string>();
         private List<string> details;
         //add constructor
+
+
+
+
+    
         public frmPatientsCRUD(frmPatients owner)
         {
             InitializeComponent();

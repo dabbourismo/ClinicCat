@@ -36,6 +36,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtPatientID = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnUp = new System.Windows.Forms.Button();
+            this.btnDeleteVisit = new System.Windows.Forms.Button();
+            this.btnDown = new System.Windows.Forms.Button();
             this.listbxWaitingQueue = new System.Windows.Forms.ListBox();
             this.btnInsertPatient = new System.Windows.Forms.Button();
             this.btnUpdatePatient = new System.Windows.Forms.Button();
@@ -60,9 +63,6 @@
             this.dtpVisitDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnDown = new System.Windows.Forms.Button();
-            this.btnUp = new System.Windows.Forms.Button();
-            this.btnDeleteVisit = new System.Windows.Forms.Button();
             this.groupbox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -164,6 +164,51 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "قائمة الانتظار";
             // 
+            // btnUp
+            // 
+            this.btnUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            this.btnUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUp.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUp.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnUp.Location = new System.Drawing.Point(183, 470);
+            this.btnUp.Name = "btnUp";
+            this.btnUp.Size = new System.Drawing.Size(56, 37);
+            this.btnUp.TabIndex = 24;
+            this.btnUp.Text = "فوق";
+            this.btnUp.UseVisualStyleBackColor = false;
+            this.btnUp.Click += new System.EventHandler(this.BtnUp_Click);
+            // 
+            // btnDeleteVisit
+            // 
+            this.btnDeleteVisit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDeleteVisit.BackColor = System.Drawing.Color.Crimson;
+            this.btnDeleteVisit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteVisit.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteVisit.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnDeleteVisit.Location = new System.Drawing.Point(68, 470);
+            this.btnDeleteVisit.Name = "btnDeleteVisit";
+            this.btnDeleteVisit.Size = new System.Drawing.Size(109, 37);
+            this.btnDeleteVisit.TabIndex = 24;
+            this.btnDeleteVisit.Text = "مسح";
+            this.btnDeleteVisit.UseVisualStyleBackColor = false;
+            this.btnDeleteVisit.Click += new System.EventHandler(this.BtnDeleteVisit_Click);
+            // 
+            // btnDown
+            // 
+            this.btnDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            this.btnDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDown.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDown.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnDown.Location = new System.Drawing.Point(6, 470);
+            this.btnDown.Name = "btnDown";
+            this.btnDown.Size = new System.Drawing.Size(56, 37);
+            this.btnDown.TabIndex = 24;
+            this.btnDown.Text = "تحت";
+            this.btnDown.UseVisualStyleBackColor = false;
+            this.btnDown.Click += new System.EventHandler(this.BtnDown_Click);
+            // 
             // listbxWaitingQueue
             // 
             this.listbxWaitingQueue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -188,6 +233,7 @@
             this.btnInsertPatient.TabIndex = 19;
             this.btnInsertPatient.Text = "(F1) إضافة";
             this.btnInsertPatient.UseVisualStyleBackColor = false;
+            this.btnInsertPatient.Click += new System.EventHandler(this.btnInsertPatient_Click);
             // 
             // btnUpdatePatient
             // 
@@ -233,7 +279,7 @@
             this.lblRemaining.ForeColor = System.Drawing.Color.DarkOrchid;
             this.lblRemaining.Location = new System.Drawing.Point(45, 201);
             this.lblRemaining.Name = "lblRemaining";
-            this.lblRemaining.Size = new System.Drawing.Size(51, 24);
+            this.lblRemaining.Size = new System.Drawing.Size(53, 22);
             this.lblRemaining.TabIndex = 8;
             this.lblRemaining.Text = "متبقي";
             // 
@@ -245,7 +291,7 @@
             this.lblPayed.ForeColor = System.Drawing.Color.DarkOrchid;
             this.lblPayed.Location = new System.Drawing.Point(45, 157);
             this.lblPayed.Name = "lblPayed";
-            this.lblPayed.Size = new System.Drawing.Size(55, 24);
+            this.lblPayed.Size = new System.Drawing.Size(58, 22);
             this.lblPayed.TabIndex = 7;
             this.lblPayed.Text = "مدفوع";
             // 
@@ -257,7 +303,7 @@
             this.lblRequired.ForeColor = System.Drawing.Color.DarkOrchid;
             this.lblRequired.Location = new System.Drawing.Point(45, 113);
             this.lblRequired.Name = "lblRequired";
-            this.lblRequired.Size = new System.Drawing.Size(62, 24);
+            this.lblRequired.Size = new System.Drawing.Size(65, 22);
             this.lblRequired.TabIndex = 6;
             this.lblRequired.Text = "مطلوب";
             // 
@@ -269,7 +315,7 @@
             this.lblDiscount.ForeColor = System.Drawing.Color.DarkOrchid;
             this.lblDiscount.Location = new System.Drawing.Point(45, 76);
             this.lblDiscount.Name = "lblDiscount";
-            this.lblDiscount.Size = new System.Drawing.Size(47, 24);
+            this.lblDiscount.Size = new System.Drawing.Size(48, 22);
             this.lblDiscount.TabIndex = 5;
             this.lblDiscount.Text = "خصم";
             // 
@@ -281,7 +327,7 @@
             this.lblTotal.ForeColor = System.Drawing.Color.DarkOrchid;
             this.lblTotal.Location = new System.Drawing.Point(45, 38);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(57, 24);
+            this.lblTotal.Size = new System.Drawing.Size(59, 22);
             this.lblTotal.TabIndex = 4;
             this.lblTotal.Text = "إجمالي";
             // 
@@ -464,51 +510,6 @@
             this.label5.Size = new System.Drawing.Size(83, 22);
             this.label5.TabIndex = 24;
             this.label5.Text = "تاريخ الزيارة";
-            // 
-            // btnDown
-            // 
-            this.btnDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            this.btnDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDown.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDown.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnDown.Location = new System.Drawing.Point(6, 470);
-            this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(56, 37);
-            this.btnDown.TabIndex = 24;
-            this.btnDown.Text = "تحت";
-            this.btnDown.UseVisualStyleBackColor = false;
-            this.btnDown.Click += new System.EventHandler(this.BtnDown_Click);
-            // 
-            // btnUp
-            // 
-            this.btnUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            this.btnUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUp.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUp.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnUp.Location = new System.Drawing.Point(183, 470);
-            this.btnUp.Name = "btnUp";
-            this.btnUp.Size = new System.Drawing.Size(56, 37);
-            this.btnUp.TabIndex = 24;
-            this.btnUp.Text = "فوق";
-            this.btnUp.UseVisualStyleBackColor = false;
-            this.btnUp.Click += new System.EventHandler(this.BtnUp_Click);
-            // 
-            // btnDeleteVisit
-            // 
-            this.btnDeleteVisit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDeleteVisit.BackColor = System.Drawing.Color.Crimson;
-            this.btnDeleteVisit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteVisit.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteVisit.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnDeleteVisit.Location = new System.Drawing.Point(68, 470);
-            this.btnDeleteVisit.Name = "btnDeleteVisit";
-            this.btnDeleteVisit.Size = new System.Drawing.Size(109, 37);
-            this.btnDeleteVisit.TabIndex = 24;
-            this.btnDeleteVisit.Text = "مسح";
-            this.btnDeleteVisit.UseVisualStyleBackColor = false;
-            this.btnDeleteVisit.Click += new System.EventHandler(this.BtnDeleteVisit_Click);
             // 
             // frmVisits
             // 

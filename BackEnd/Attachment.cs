@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -15,8 +16,11 @@ namespace ClinicCat.BackEnd
             string[] fileName = filePath.Split(Convert.ToChar(@"\"));
             try
             {
-                ExecuteNonQuery(@"insert into Attachments (Attachment_Name,Attachment,PatientID)
-                                    values('" + fileName[fileName.Length - 1] + "','" + imageData + "','" + patientID + "')");
+               
+                cm.CommandText = @"insert into Attachments (Attachment_Name,Attachment,PatientID)
+                                    values('" + fileName[fileName.Length - 1] + "',@photo,'" + patientID + "')";
+                cm.Parameters.Add("@photo", SqlDbType.VarBinary, imageData.Length).Value = imageData;
+                cm.ExecuteNonQuery();
             }
             catch (Exception)
             {
@@ -30,7 +34,7 @@ namespace ClinicCat.BackEnd
 
             try
             {
-                return ExecuteReader(@"select Attachment,Attachment_Name from Attachments where PatientID='" + patientID + "'", new string[] { "Attachment", "Attachment_Name" });
+                return ExecuteReader(@"select ID,Attachment_Name from Attachments where PatientID='" + patientID + "'", new string[] { "ID", "Attachment_Name" });
             }
             catch (Exception)
             {

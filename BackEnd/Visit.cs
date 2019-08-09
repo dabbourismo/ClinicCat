@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Forms;
 using static ClinicCat.DataAccessLayer.DataAccessLayer;
 
 namespace ClinicCat.BackEnd
@@ -159,12 +160,13 @@ namespace ClinicCat.BackEnd
 
             try
             {
+                
                 return ExecuteScalar<int>(@"SELECT 
                             dbo.Visits.ID
                             FROM dbo.Patients
                             INNER JOIN
-                            dbo.Visits ON dbo.Patients.ID=dbo.Visits.PatientID where (Patients.Pat_WifeName='" + patientName + "') and (Visit_Enter_Time IS NULL)");
-            }
+                            dbo.Visits ON dbo.Patients.ID=dbo.Visits.PatientID where (Patients.Pat_WifeName='" + patientName + "')");
+                    }
             catch
             {
                 return 0;

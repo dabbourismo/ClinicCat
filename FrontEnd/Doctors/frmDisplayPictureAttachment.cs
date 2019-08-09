@@ -23,8 +23,12 @@ namespace ClinicCat.FrontEnd.Doctors
 
         private void ListView_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-        }
+            try
+            {
+                pictureBox.Image = DoctorsLogic.imageList[listView.SelectedItems[0].Index];
+            }
+            catch { }
+            }
 
         private void BtnChoosePicture_Click(object sender, EventArgs e)
         {

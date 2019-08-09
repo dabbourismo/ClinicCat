@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using static ClinicCat.BackEnd.Doctor;
+using static ClinicCat.DataAccessLayer.DataAccessLayer;
+
 namespace ClinicCat.FrontEnd.Doctors
 {
     public static class DoctorsLogic
     {
         private static List<string> containerList;
-        private static List<Image> imageList;
+        public static List<Image> imageList;
         static DoctorsLogic()
         {
 
@@ -57,10 +59,12 @@ namespace ClinicCat.FrontEnd.Doctors
 
         public static Image ConvertBinaryToImage(byte[] imageData)
         {
-            using (MemoryStream memoryStream = new MemoryStream(imageData))
-            {
-                return Image.FromStream(memoryStream);
-            }
+            MemoryStream mStream = new MemoryStream();
+            byte[] pData = imageData;
+            mStream.Write(pData, 0, Convert.ToInt32(pData.Length));
+            Bitmap bm = new Bitmap(mStream, false);
+            mStream.Dispose();
+            return bm;
         }
         public static void PopulatePictureListBox(ListView listview,int patientID)
         {
@@ -74,8 +78,14 @@ namespace ClinicCat.FrontEnd.Doctors
             }
             for (int i = 0; i < containerList.Count; i++)
             {
-                imageList.Add(ConvertBinaryToImage(Encoding.ASCII.GetBytes(containerList[0].ToString())));
+                imageList.Add(ConvertBinaryToImage(GetPhoto(containerList[0].ToString())));
             }
+        }
+
+        public static byte[] GetPhoto(string userId)
+        {
+            cm.CommandText = "select Attachment from Attachments where ID = '" + containerList[0].ToString() + "'";
+            return cm.ExecuteScalar() as byte[];
         }
     }
 }

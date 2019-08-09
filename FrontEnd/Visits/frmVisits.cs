@@ -26,22 +26,24 @@ namespace ClinicCat.FrontEnd.Visits
                 try
                 {
                     VisitsLogic.PatientInfo(new List<TextBox>() { txtPatientID, txtPatientName, txtPatientPhone });
+
+                    //check if reservation exists, if yes : insert reciption time
+                    if (CheckForVisit(int.Parse(txtPatientID.Text)))
+                    {
+                        DialogResult Dialog = MessageBox.Show("تسجيل حضور المريض ؟", "تنبيه", MessageBoxButtons.YesNo);
+                        if (Dialog == DialogResult.Yes)
+                        {
+                            RegisterVisit();
+                            VisitsLogic.PopulateListBox(listbxWaitingQueue);
+                        }
+                    }
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("مريضة غير موجودة");
                 }
                 
-                //check if reservation exists, if yes : insert reciption time
-                if (CheckForVisit(int.Parse(txtPatientID.Text)))
-                {
-                    DialogResult Dialog = MessageBox.Show("تسجيل حضور المريض ؟", "تنبيه", MessageBoxButtons.YesNo);
-                    if (Dialog == DialogResult.Yes)
-                    {
-                        RegisterVisit();
-                        VisitsLogic.PopulateListBox(listbxWaitingQueue);
-                    }
-                }
+              
             }
 
         }
@@ -100,6 +102,10 @@ namespace ClinicCat.FrontEnd.Visits
         private void BtnDeleteVisit_Click(object sender, EventArgs e)
         {
             VisitsLogic.RemoveVisitFromListbox(listbxWaitingQueue);
+        }
+
+        private void btnInsertPatient_Click(object sender, EventArgs e)
+        {
         }
     }
 }
