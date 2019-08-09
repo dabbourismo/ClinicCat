@@ -1,5 +1,6 @@
 ﻿using ClinicCat.BackEnd;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -82,9 +83,10 @@ namespace ClinicCat.FrontEnd.Doctors
             }
         }
 
+        
         public static byte[] GetPhoto(string userId)
         {
-            cm.CommandText = "select Attachment from Attachments where ID = '" + containerList[0].ToString() + "'";
+            cm.CommandText = "select Attachment from Attachments where ID = '" + userId + "'";
             return cm.ExecuteScalar() as byte[];
         }
     }
