@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{43E885F9-D271-4482-9582-89BBF2DBD535}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ClinicCat</RootNamespace>
+    <AssemblyName>ClinicCat</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BackEnd\Attachment.cs" />
+    <Compile Include="BackEnd\Category.cs" />
+    <Compile Include="BackEnd\Doctor.cs" />
+    <Compile Include="BackEnd\Patient.cs" />
+    <Compile Include="BackEnd\Service.cs" />
+    <Compile Include="BackEnd\Setting.cs" />
+    <Compile Include="BackEnd\Visit.cs" />
+    <Compile Include="BackEnd\Waiting.cs" />
+    <Compile Include="ClinicCatDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClinicCatDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLayer\ConnectionSettings.cs" />
+    <Compile Include="DataAccessLayer\DataAccessLayer.cs" />
+    <Compile Include="frmHOME.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHOME.Designer.cs">
+      <DependentUpon>frmHOME.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Categories\CategoriesLogic.cs" />
+    <Compile Include="FrontEnd\Categories\frmCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\Categories\frmCategory.Designer.cs">
+      <DependentUpon>frmCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Categories\frmCategoryCRUD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\Categories\frmCategoryCRUD.Designer.cs">
+      <DependentUpon>frmCategoryCRUD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Doctors\DoctorsLogic.cs" />
+    <Compile Include="FrontEnd\Doctors\frmDisplayPictureAttachment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\Doctors\frmDisplayPictureAttachment.Designer.cs">
+      <DependentUpon>frmDisplayPictureAttachment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Doctors\frmDoctors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\Doctors\frmDoctors.Designer.cs">
+      <DependentUpon>frmDoctors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Patients\frmPatients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\Patients\frmPatients.Designer.cs">
+      <DependentUpon>frmPatients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Patients\frmPatientsCRUD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\Patients\frmPatientsCRUD.Designer.cs">
+      <DependentUpon>frmPatientsCRUD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Patients\PatientsLogic.cs" />
+    <Compile Include="FrontEnd\Services\frmServices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\Services\frmServices.Designer.cs">
+      <DependentUpon>frmServices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Services\frmServicesCRUD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\Services\frmServicesCRUD.Designer.cs">
+      <DependentUpon>frmServicesCRUD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Services\ServicesLogic.cs" />
+    <Compile Include="FrontEnd\Settings\frmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\Settings\frmSettings.Designer.cs">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Settings\SettingsLogic.cs" />
+    <Compile Include="FrontEnd\ValidationMethods.cs" />
+    <Compile Include="FrontEnd\Visits\frmVisits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\Visits\frmVisits.Designer.cs">
+      <DependentUpon>frmVisits.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Visits\VisitsLogic.cs" />
+    <Compile Include="FrontEnd\Waiting\frmWaiting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\Waiting\frmWaiting.Designer.cs">
+      <DependentUpon>frmWaiting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Waiting\WaitingLogic.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmHOME.resx">
+      <DependentUpon>frmHOME.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrontEnd\Categories\frmCategory.resx">
+      <DependentUpon>frmCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrontEnd\Categories\frmCategoryCRUD.resx">
+      <DependentUpon>frmCategoryCRUD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrontEnd\Doctors\frmDisplayPictureAttachment.resx">
+      <DependentUpon>frmDisplayPictureAttachment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrontEnd\Doctors\frmDoctors.resx">
+      <DependentUpon>frmDoctors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrontEnd\Patients\frmPatients.resx">
+      <DependentUpon>frmPatients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrontEnd\Patients\frmPatientsCRUD.resx">
+      <DependentUpon>frmPatientsCRUD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrontEnd\Services\frmServices.resx">
+      <DependentUpon>frmServices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrontEnd\Services\frmServicesCRUD.resx">
+      <DependentUpon>frmServicesCRUD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrontEnd\Settings\frmSettings.resx">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrontEnd\Visits\frmVisits.resx">
+      <DependentUpon>frmVisits.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrontEnd\Waiting\frmWaiting.resx">
+      <DependentUpon>frmWaiting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="ClinicCatDBDataSet.xsc">
+      <DependentUpon>ClinicCatDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ClinicCatDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ClinicCatDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ClinicCatDBDataSet.xss">
+      <DependentUpon>ClinicCatDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RightSign.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WrongSign.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database modify.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
