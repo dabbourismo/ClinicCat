@@ -9,7 +9,7 @@ namespace ClinicCat.DataAccessLayer
     public class ConnectionSettings
     {
         //public static string Connection = @"Data Source=ClownClubDB.db;MultipleActiveResultSets=true;";
-        public static string connection = @"Data Source=DESKTOP-T5QPJG2;Initial Catalog=ClinicCatDB;Integrated Security=True;MultipleActiveResultSets=True";
+        public static string connection = @"Data Source=.;Initial Catalog=ClinicCatDB;Integrated Security=True;MultipleActiveResultSets=True";
         public static SqlConnection cn = new SqlConnection();
     }
 }

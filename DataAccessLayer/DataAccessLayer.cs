@@ -55,16 +55,14 @@ namespace ClinicCat.DataAccessLayer
             cm.Connection = ConnectionSettings.cn;
             cm.CommandText = command;
 
-            if ((T)cm.ExecuteScalar() == default)
-            {
-                return default(T); //>produce the default value for each datatype. reference=>null,value=>0 etc;
-            }
-            else
+            try
             {
                 return (T)cm.ExecuteScalar();
             }
-        }
+            catch { return default(T); }
 
+
+        }
         public static List<string> ExecuteReader(string command, string[] WhatDoYouWantToReturn)
         {
 
