@@ -41,14 +41,14 @@ namespace ClinicCat.BackEnd
             }
         }
         public static bool Insert(int patientID, string visitDate, bool visitType,
-            bool visitIsTelephone, StringBuilder visitExtraServices, byte visitState)
+            bool visitIsTelephone, StringBuilder visitExtraServices, byte visitState,decimal required)
         {
             try
             {
                 ExecuteNonQuery(@"insert into Visits (PatientID,Visit_Date,Visit_Type,Visit_Reserve_Time,
-                                Visit_IsPhone,Visit_ExtraServices,Visit_State) 
+                                Visit_IsPhone,Visit_ExtraServices,Visit_State,Required) 
                             values ('" + patientID + "','" + visitDate + "','" + visitType + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "','" + visitIsTelephone + "','" + visitExtraServices + "'," +
-                            "'" + visitState + "')");
+                            "'" + visitState + "','" + required + "')");
                 return true;
             }
             catch (Exception)

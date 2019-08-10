@@ -64,13 +64,13 @@ namespace ClinicCat.FrontEnd.Visits
             {
 
                 if (Insert(int.Parse(txtPatientID.Text), dtpVisitDate.Value.ToString("yyyy-MM-dd"), visitType, chkIsPhone.Checked,
-                    additionalServices, visitState))
+                    additionalServices, visitState,numTotal.Value))
                 {
                     int visitID = Payment.Get_VisitID_for_Payment(int.Parse(txtPatientID.Text));
                     if (visitID != 0)
                     {
                         Payment.InsertPayment(txtPatientName.Text, true, visitID, int.Parse(txtPatientID.Text), DateTime.Now.ToString("yyyy-MM-dd"),
-           numTotal.Value, numPayed.Value, numRemaining.Value);
+           numPayed.Value);
                         VisitsLogic.PopulateListBox(listbxWaitingQueue);
                     }
                     MessageBox.Show("Success");

@@ -126,6 +126,19 @@
       <DependentUpon>frmPatientsCRUD.cs</DependentUpon>
     </Compile>
     <Compile Include="FrontEnd\Patients\PatientsLogic.cs" />
+    <Compile Include="FrontEnd\Payments\frmPaymentCRUD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\Payments\frmPaymentCRUD.Designer.cs">
+      <DependentUpon>frmPaymentCRUD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Payments\frmPayments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\Payments\frmPayments.Designer.cs">
+      <DependentUpon>frmPayments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Payments\PaymentsLogic.cs" />
     <Compile Include="FrontEnd\Services\frmServices.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +204,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrontEnd\Patients\frmPatientsCRUD.resx">
       <DependentUpon>frmPatientsCRUD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrontEnd\Payments\frmPaymentCRUD.resx">
+      <DependentUpon>frmPaymentCRUD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrontEnd\Payments\frmPayments.resx">
+      <DependentUpon>frmPayments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrontEnd\Services\frmServices.resx">
       <DependentUpon>frmServices.cs</DependentUpon>

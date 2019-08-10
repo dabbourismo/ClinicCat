@@ -7,6 +7,7 @@ using ClinicCat.FrontEnd.Visits;
 using ClinicCat.FrontEnd.Settings;
 using ClinicCat.FrontEnd.Waiting;
 using ClinicCat.FrontEnd.Doctors;
+using ClinicCat.FrontEnd.Payments;
 namespace ClinicCat
 {
     public partial class frmHOME : Form
@@ -18,6 +19,7 @@ namespace ClinicCat
         frmSettings frmSettings;
         frmWaiting frmWaiting;
         frmDoctors frmDoctors;
+        frmPayments frmPayments;
         public frmHOME()
         {
             InitializeComponent();
@@ -132,6 +134,21 @@ namespace ClinicCat
             frmDoctors.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             frmDoctors.Dock = DockStyle.Fill;
             frmDoctors.Show();
+        }
+
+        private void Button9_Click(object sender, EventArgs e)
+        {
+            panel3.Height = button9.Height;
+            panel3.Top = button9.Top;
+
+            this.Text = "الحسابات";
+            frmPayments = new frmPayments();
+            groupBox1.Controls.Clear();
+            frmPayments.TopLevel = false;
+            groupBox1.Controls.Add(frmPayments);
+            frmPayments.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            frmPayments.Dock = DockStyle.Fill;
+            frmPayments.Show();
         }
     }
 }

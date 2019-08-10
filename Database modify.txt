@@ -1,1 +1,2 @@
-﻿Reaname Column 'PatientID' to 'VisitID' in Table 'Attachments'
+﻿//Reaname Column 'PatientID' to 'VisitID' in Table 'Attachments'
+
