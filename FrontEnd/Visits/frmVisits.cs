@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using static ClinicCat.BackEnd.Visit;
 using System.Text;
-
+using ClinicCat.BackEnd;
 namespace ClinicCat.FrontEnd.Visits
 {
     public partial class frmVisits : Form
@@ -42,8 +42,8 @@ namespace ClinicCat.FrontEnd.Visits
                 {
                     MessageBox.Show("مريضة غير موجودة");
                 }
-                
-              
+
+
             }
 
         }
@@ -66,10 +66,19 @@ namespace ClinicCat.FrontEnd.Visits
                 if (Insert(int.Parse(txtPatientID.Text), dtpVisitDate.Value.ToString("yyyy-MM-dd"), visitType, chkIsPhone.Checked,
                     additionalServices, visitState))
                 {
+                    int visitID = Payment.Get_VisitID_for_Payment(int.Parse(txtPatientID.Text));
+                    if (visitID != 0)
+                    {
+                        Payment.InsertPayment(txtPatientName.Text, true, visitID, int.Parse(txtPatientID.Text), DateTime.Now.ToString("yyyy-MM-dd"),
+           numTotal.Value, numPayed.Value, numRemaining.Value);
+                        VisitsLogic.PopulateListBox(listbxWaitingQueue);
+                    }
                     MessageBox.Show("Success");
+                    //0-insert payment
+
                     //1-loop on textboxes and make them empty
                     //2-populate list box
-                    VisitsLogic.PopulateListBox(listbxWaitingQueue);
+
                 }
             }
             catch (Exception)
@@ -81,17 +90,17 @@ namespace ClinicCat.FrontEnd.Visits
 
         private void CmbxVisitType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            VisitsLogic.CalculateTotalRequired(cmbxVisitType, lblTotal,clbAdditionalServices);
+            VisitsLogic.CalculateTotalRequired(cmbxVisitType, numTotal, clbAdditionalServices);
         }
 
         private void ClbAdditionalServices_SelectedIndexChanged(object sender, EventArgs e)
         {
-            VisitsLogic.CalculateTotalRequired(cmbxVisitType, lblTotal, clbAdditionalServices);
+            VisitsLogic.CalculateTotalRequired(cmbxVisitType, numTotal, clbAdditionalServices);
         }
 
         private void BtnUp_Click(object sender, EventArgs e)
         {
-            VisitsLogic.ChangePriority(listbxWaitingQueue,"up");         
+            VisitsLogic.ChangePriority(listbxWaitingQueue, "up");
         }
 
         private void BtnDown_Click(object sender, EventArgs e)
@@ -106,6 +115,11 @@ namespace ClinicCat.FrontEnd.Visits
 
         private void btnInsertPatient_Click(object sender, EventArgs e)
         {
+        }
+
+        private void NumPayed_ValueChanged(object sender, EventArgs e)
+        {
+            numRemaining.Value= numRequired.Value - numPayed.Value;
         }
     }
 }

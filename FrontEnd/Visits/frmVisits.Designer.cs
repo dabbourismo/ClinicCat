@@ -43,11 +43,6 @@
             this.btnInsertPatient = new System.Windows.Forms.Button();
             this.btnUpdatePatient = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lblRemaining = new System.Windows.Forms.Label();
-            this.lblPayed = new System.Windows.Forms.Label();
-            this.lblRequired = new System.Windows.Forms.Label();
-            this.lblDiscount = new System.Windows.Forms.Label();
-            this.lblTotal = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -63,11 +58,21 @@
             this.dtpVisitDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.numPayed = new System.Windows.Forms.NumericUpDown();
+            this.numTotal = new System.Windows.Forms.NumericUpDown();
+            this.numDiscount = new System.Windows.Forms.NumericUpDown();
+            this.numRequired = new System.Windows.Forms.NumericUpDown();
+            this.numRemaining = new System.Windows.Forms.NumericUpDown();
             this.groupbox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numPayed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTotal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDiscount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numRequired)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numRemaining)).BeginInit();
             this.SuspendLayout();
             // 
             // groupbox1
@@ -252,11 +257,11 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox3.Controls.Add(this.lblRemaining);
-            this.groupBox3.Controls.Add(this.lblPayed);
-            this.groupBox3.Controls.Add(this.lblRequired);
-            this.groupBox3.Controls.Add(this.lblDiscount);
-            this.groupBox3.Controls.Add(this.lblTotal);
+            this.groupBox3.Controls.Add(this.numRemaining);
+            this.groupBox3.Controls.Add(this.numRequired);
+            this.groupBox3.Controls.Add(this.numDiscount);
+            this.groupBox3.Controls.Add(this.numTotal);
+            this.groupBox3.Controls.Add(this.numPayed);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.label9);
@@ -270,66 +275,6 @@
             this.groupBox3.TabIndex = 21;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "المستحقات";
-            // 
-            // lblRemaining
-            // 
-            this.lblRemaining.AutoSize = true;
-            this.lblRemaining.BackColor = System.Drawing.Color.White;
-            this.lblRemaining.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRemaining.ForeColor = System.Drawing.Color.DarkOrchid;
-            this.lblRemaining.Location = new System.Drawing.Point(45, 201);
-            this.lblRemaining.Name = "lblRemaining";
-            this.lblRemaining.Size = new System.Drawing.Size(53, 22);
-            this.lblRemaining.TabIndex = 8;
-            this.lblRemaining.Text = "متبقي";
-            // 
-            // lblPayed
-            // 
-            this.lblPayed.AutoSize = true;
-            this.lblPayed.BackColor = System.Drawing.Color.White;
-            this.lblPayed.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPayed.ForeColor = System.Drawing.Color.DarkOrchid;
-            this.lblPayed.Location = new System.Drawing.Point(45, 157);
-            this.lblPayed.Name = "lblPayed";
-            this.lblPayed.Size = new System.Drawing.Size(58, 22);
-            this.lblPayed.TabIndex = 7;
-            this.lblPayed.Text = "مدفوع";
-            // 
-            // lblRequired
-            // 
-            this.lblRequired.AutoSize = true;
-            this.lblRequired.BackColor = System.Drawing.Color.White;
-            this.lblRequired.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRequired.ForeColor = System.Drawing.Color.DarkOrchid;
-            this.lblRequired.Location = new System.Drawing.Point(45, 113);
-            this.lblRequired.Name = "lblRequired";
-            this.lblRequired.Size = new System.Drawing.Size(65, 22);
-            this.lblRequired.TabIndex = 6;
-            this.lblRequired.Text = "مطلوب";
-            // 
-            // lblDiscount
-            // 
-            this.lblDiscount.AutoSize = true;
-            this.lblDiscount.BackColor = System.Drawing.Color.White;
-            this.lblDiscount.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiscount.ForeColor = System.Drawing.Color.DarkOrchid;
-            this.lblDiscount.Location = new System.Drawing.Point(45, 76);
-            this.lblDiscount.Name = "lblDiscount";
-            this.lblDiscount.Size = new System.Drawing.Size(48, 22);
-            this.lblDiscount.TabIndex = 5;
-            this.lblDiscount.Text = "خصم";
-            // 
-            // lblTotal
-            // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.BackColor = System.Drawing.Color.White;
-            this.lblTotal.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.ForeColor = System.Drawing.Color.DarkOrchid;
-            this.lblTotal.Location = new System.Drawing.Point(45, 38);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(59, 22);
-            this.lblTotal.TabIndex = 4;
-            this.lblTotal.Text = "إجمالي";
             // 
             // label11
             // 
@@ -511,6 +456,96 @@
             this.label5.TabIndex = 24;
             this.label5.Text = "تاريخ الزيارة";
             // 
+            // numPayed
+            // 
+            this.numPayed.Location = new System.Drawing.Point(21, 155);
+            this.numPayed.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.numPayed.Minimum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            -2147483648});
+            this.numPayed.Name = "numPayed";
+            this.numPayed.Size = new System.Drawing.Size(98, 30);
+            this.numPayed.TabIndex = 9;
+            this.numPayed.ValueChanged += new System.EventHandler(this.NumPayed_ValueChanged);
+            // 
+            // numTotal
+            // 
+            this.numTotal.Location = new System.Drawing.Point(21, 36);
+            this.numTotal.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.numTotal.Minimum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            -2147483648});
+            this.numTotal.Name = "numTotal";
+            this.numTotal.Size = new System.Drawing.Size(98, 30);
+            this.numTotal.TabIndex = 9;
+            this.numTotal.ValueChanged += new System.EventHandler(this.NumPayed_ValueChanged);
+            // 
+            // numDiscount
+            // 
+            this.numDiscount.Location = new System.Drawing.Point(21, 74);
+            this.numDiscount.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.numDiscount.Minimum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            -2147483648});
+            this.numDiscount.Name = "numDiscount";
+            this.numDiscount.Size = new System.Drawing.Size(98, 30);
+            this.numDiscount.TabIndex = 9;
+            this.numDiscount.ValueChanged += new System.EventHandler(this.NumPayed_ValueChanged);
+            // 
+            // numRequired
+            // 
+            this.numRequired.Location = new System.Drawing.Point(21, 111);
+            this.numRequired.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.numRequired.Minimum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            -2147483648});
+            this.numRequired.Name = "numRequired";
+            this.numRequired.Size = new System.Drawing.Size(98, 30);
+            this.numRequired.TabIndex = 9;
+            this.numRequired.ValueChanged += new System.EventHandler(this.NumPayed_ValueChanged);
+            // 
+            // numRemaining
+            // 
+            this.numRemaining.Location = new System.Drawing.Point(21, 201);
+            this.numRemaining.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.numRemaining.Minimum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            -2147483648});
+            this.numRemaining.Name = "numRemaining";
+            this.numRemaining.Size = new System.Drawing.Size(98, 30);
+            this.numRemaining.TabIndex = 9;
+            this.numRemaining.ValueChanged += new System.EventHandler(this.NumPayed_ValueChanged);
+            // 
             // frmVisits
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 22F);
@@ -537,6 +572,11 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numPayed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTotal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDiscount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numRequired)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numRemaining)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -570,13 +610,13 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label lblRemaining;
-        private System.Windows.Forms.Label lblPayed;
-        private System.Windows.Forms.Label lblRequired;
-        private System.Windows.Forms.Label lblDiscount;
-        private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Button btnUp;
         private System.Windows.Forms.Button btnDown;
         private System.Windows.Forms.Button btnDeleteVisit;
+        private System.Windows.Forms.NumericUpDown numPayed;
+        private System.Windows.Forms.NumericUpDown numRemaining;
+        private System.Windows.Forms.NumericUpDown numRequired;
+        private System.Windows.Forms.NumericUpDown numDiscount;
+        private System.Windows.Forms.NumericUpDown numTotal;
     }
 }

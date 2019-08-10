@@ -93,12 +93,11 @@ namespace ClinicCat.BackEnd
         private static string visitID;
         public static bool CheckForVisit(int PatientID)
         {
-
             try
             {
-                visitID = (ExecuteScalar<int>(@"select ID from Visits WHERE (Visit_Reserve_Time IS NOT NULL) and (Visit_Reception_Time IS NULL) and(Priority IS NULL) and PatientID ='" + PatientID + "'")).ToString();
+                visitID = (ExecuteScalar<int>(@"select ID from Visits WHERE (Visit_Reserve_Time IS NOT NULL) and (Visit_Reception_Time IS NULL) and(Priority IS NULL) and PatientID='" + PatientID + "'")).ToString();
                 //موجود مسبقا
-                if (visitID != null)
+                if (visitID != "0")
                 {
                     return true;
                 }

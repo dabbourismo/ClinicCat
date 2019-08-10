@@ -63,6 +63,7 @@
     <Compile Include="BackEnd\Category.cs" />
     <Compile Include="BackEnd\Doctor.cs" />
     <Compile Include="BackEnd\Patient.cs" />
+    <Compile Include="BackEnd\Payment.cs" />
     <Compile Include="BackEnd\Service.cs" />
     <Compile Include="BackEnd\Setting.cs" />
     <Compile Include="BackEnd\Visit.cs" />

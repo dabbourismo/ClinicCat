@@ -113,20 +113,20 @@ namespace ClinicCat.FrontEnd.Visits
             }
 
         }
-        public static void CalculateTotalRequired(ComboBox cmbx, Label lbl, CheckedListBox clb)
+        public static void CalculateTotalRequired(ComboBox cmbx, NumericUpDown num, CheckedListBox clb)
         {
-            lbl.Text = "0";
+            num.Value = 0;
             if (cmbx.SelectedIndex == 0)
             {
-                lbl.Text = (Setting.getExaminePrice()).ToString();
+                num.Value = Setting.getExaminePrice();
             }
             else
             {
-                lbl.Text = (Setting.getreExaminePrice()).ToString();
+                num.Value = Setting.getreExaminePrice();
             }
             foreach (string service in clb.CheckedItems)
             {
-                lbl.Text = (decimal.Parse(lbl.Text) + Service.getService_Price_by_Name(service)).ToString();
+                num.Value = num.Value + Service.getService_Price_by_Name(service);
             }
         }
         public static StringBuilder AdditionalServicesAppend(CheckedListBox clb)
