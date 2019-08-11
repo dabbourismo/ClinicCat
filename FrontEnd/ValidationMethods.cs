@@ -22,5 +22,47 @@ namespace ClinicCat.FrontEnd
                 }
             }
         }
+        public static void ClearNumericUpDown(List<NumericUpDown> NumericUpDown)
+        {
+            foreach (NumericUpDown numericupdown in NumericUpDown)
+            {
+                numericupdown.Value = 0;
+            }
+        }
+        public static void ClearTextBoxes(List<TextBox> textBoxlist)
+        {
+            foreach (TextBox txtbox in textBoxlist)
+            {
+                txtbox.Text = String.Empty;
+            }
+        }
+        public static void Enable_DisableTextBoxes(List<TextBox> textBoxlist, bool isEnabled)
+        {
+            if (isEnabled == true)
+            {
+                foreach (TextBox txtbox in textBoxlist)
+                {
+                    txtbox.Enabled = true;
+                }
+            }
+            else
+            {
+                foreach (TextBox txtbox in textBoxlist)
+                {
+                    txtbox.Enabled = false;
+                }
+            }
+
+        }
+        public static void ClearCheckedListBoxSelection(CheckedListBox chkedListBox)
+        {
+            for (int i = 0; i < chkedListBox.Items.Count; i++)
+            {
+                chkedListBox.SetItemCheckState(i, (false ? CheckState.Checked : CheckState.Unchecked));
+            }
+                
+        }
+
+
     }
 }

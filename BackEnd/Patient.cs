@@ -17,7 +17,18 @@ namespace ClinicCat.BackEnd
         {
             try
             {
-                return ExecuteScalar<int>(@"select ID from Patients where Pat_WifeName = '" + patientName + "'");
+                return ExecuteScalar<int>(@"select ID from Patients where Pat_WifeName='" + patientName + "'");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public static string getPatientName_By_ID(int patientID)
+        {
+            try
+            {
+                return ExecuteScalar<string>(@"select Pat_WifeName from Patients where ID='" + patientID + "'");
             }
             catch (Exception)
             {
@@ -66,7 +77,7 @@ namespace ClinicCat.BackEnd
                                     INNER JOIN
                                     dbo.Categories dbo.Patients.CategoriesID = dbo.Categories.ID 
                                     where ID = '" + ID + "' ");
-                    
+
                 }
                 else
                 {
@@ -103,7 +114,7 @@ namespace ClinicCat.BackEnd
                                     where dbo.Patients.Pat_WifePhone = '" + wifePhone + "' ");
                     }
                 }
-                
+
 
             }
             catch (Exception)

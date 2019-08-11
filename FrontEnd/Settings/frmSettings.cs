@@ -21,12 +21,16 @@ namespace ClinicCat.FrontEnd.Settings
 
             containerList = new List<string>();
             containerList = GetSettings(1);
-            backupPath = containerList[0];
-            videoPath = containerList[1];
-            txtNews.Text = containerList[2];
-            numDaysBetween.Value = decimal.Parse(containerList[3]);
-            numExaminePrice.Value = decimal.Parse(containerList[4]);
-            numRe_ExaminePrice.Value = decimal.Parse(containerList[5]);
+            if (containerList.Count>0)
+            {
+                backupPath = containerList[0];
+                videoPath = containerList[1];
+                txtNews.Text = containerList[2];
+                numDaysBetween.Value = decimal.Parse(containerList[3]);
+                numExaminePrice.Value = decimal.Parse(containerList[4]);
+                numRe_ExaminePrice.Value = decimal.Parse(containerList[5]);
+            }
+           
             SettingsLogic.ShowPicture(videoPath, picVideoConfirm);
             SettingsLogic.ShowPicture(backupPath, picVideoConfirm);
         }
@@ -43,10 +47,21 @@ namespace ClinicCat.FrontEnd.Settings
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            if (Edit(1, backupPath, videoPath, txtNews.Text, byte.Parse(numDaysBetween.Value.ToString()), numExaminePrice.Value, numRe_ExaminePrice.Value))
+            if (containerList.Count == 0)
             {
-                MessageBox.Show("تم الحفظ بنجاح");
+                if (Insert(backupPath,videoPath,txtNews.Text, byte.Parse(numDaysBetween.Value.ToString()), numExaminePrice.Value, numRe_ExaminePrice.Value))
+                {
+                    MessageBox.Show("تم الحفظ بنجاح");
+                }
             }
+            else
+            {
+                if (Edit(1, backupPath, videoPath, txtNews.Text, byte.Parse(numDaysBetween.Value.ToString()), numExaminePrice.Value, numRe_ExaminePrice.Value))
+                {
+                    MessageBox.Show("تم الحفظ بنجاح");
+                }
+            }
+           
         }
         //لما اليوزر يختار الفيديو اية اللى يحصل؟
         private void OfdChooseVideo_FileOk(object sender, CancelEventArgs e)

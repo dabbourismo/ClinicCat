@@ -10,12 +10,14 @@ namespace ClinicCat.FrontEnd.Patients
         private frmPatients frmPatients;
         private List<string> parameters = new List<string>();
         private List<string> details;
+        private int? patientID;
         //add constructor
+        public frmPatientsCRUD()
+        {
+            InitializeComponent();
+            cmbxCategoryName.DataSource = Category.getCategories_DropDownList();
+        }
 
-
-
-
-    
         public frmPatientsCRUD(frmPatients owner)
         {
             InitializeComponent();
@@ -23,17 +25,27 @@ namespace ClinicCat.FrontEnd.Patients
             cmbxCategoryName.DataSource = Category.getCategories_DropDownList();
         }
         //edit constructor
-        public frmPatientsCRUD(frmPatients owner, List<string> parameters)
+        public frmPatientsCRUD(frmPatients owner, List<string> parameters, int? patientID)
         {
             InitializeComponent();
-            frmPatients = owner;
-            this.parameters = parameters;
             cmbxCategoryName.DataSource = Category.getCategories_DropDownList();
+            //get values using parameter[0] > patient id في حالة التعديل من شاشة المرضى
             if (parameters.Count > 0)
             {
-                //get values using parameter[0] > patient id
+                frmPatients = owner;
+                this.parameters = parameters;
                 details = new List<string>();
                 details = Details(int.Parse(parameters[0]));
+            }
+            //في حالة التعديل من شاشة الحجز
+            if (patientID.HasValue)
+            {
+                this.patientID = patientID;
+                details = new List<string>();
+                details = Details(patientID.Value);
+            }
+            if (patientID.HasValue || parameters.Count > 0)
+            {
                 //assign to controls
                 //**wife**//
                 cmbxCategoryName.Text = Category.getCategory_Name_by_ID(details[1]);
@@ -65,6 +77,9 @@ namespace ClinicCat.FrontEnd.Patients
                 txtHusbandEmail.Text = details[19];
                 txtHusbandSmokingType.Text = details[20];
             }
+
+
+
         }
 
 
@@ -82,13 +97,27 @@ namespace ClinicCat.FrontEnd.Patients
                         txtHusbandName.Text, txtHusbandPhone.Text, byte.Parse(numHusbandAge.Value.ToString()), txtHusbandJob.Text,
                         dtpHusbandBirthDate.Value.ToString("yyyy-MM-dd"), txtusbandRelation.Text, txtHusbandEmail.Text, txtHusbandSmokingType.Text)) ;
                     {
-                        frmPatients.Focus();
-                        PatientsLogic.RefreshAfterEdit(frmPatients.dataGridView1);
-                        parameters.Clear();
-                        details.Clear();
-                        parameters.TrimExcess();
-                        details.TrimExcess();
-                        this.Close();
+                        //في حالة التعديل من شاشة المرضى
+                        if (frmPatients != null)
+                        {
+                            frmPatients.Focus();
+                            PatientsLogic.RefreshAfterEdit(frmPatients.dataGridView1);
+                            parameters.Clear();
+                            details.Clear();
+                            parameters.TrimExcess();
+                            details.TrimExcess();
+                            this.Close();
+                        }
+                        //في حالة التعديل من شاشة الحجز
+                        else
+                        {
+                            parameters.Clear();
+                            details.Clear();
+                            parameters.TrimExcess();
+                            details.TrimExcess();
+                            this.Close();
+                        }
+
                     }
                 }
                 catch (Exception)
@@ -112,11 +141,22 @@ namespace ClinicCat.FrontEnd.Patients
                         txtHusbandName.Text, txtHusbandPhone.Text, byte.Parse(numHusbandAge.Value.ToString()), txtHusbandJob.Text,
                         dtpHusbandBirthDate.Value.ToString("yyyy-MM-dd"), txtusbandRelation.Text, txtHusbandEmail.Text, txtHusbandSmokingType.Text))
                     {
-                        frmPatients.Focus();
-                        PatientsLogic.RefreshAfterAdd(frmPatients.dataGridView1);
-                        parameters.Clear();
-                        parameters.TrimExcess();
-                        this.Close();
+                        //في حالة الاضافة من شاشة المرضى
+                        if (frmPatients != null)
+                        {
+                            frmPatients.Focus();
+                            PatientsLogic.RefreshAfterAdd(frmPatients.dataGridView1);
+                            parameters.Clear();
+                            parameters.TrimExcess();
+                            this.Close();
+                        }
+                        //في حالة الاضافة من شاشة الحجز
+                        else
+                        {
+
+                            this.Close();
+                        }
+
                     }
                 }
                 catch (Exception)

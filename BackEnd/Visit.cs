@@ -172,6 +172,23 @@ namespace ClinicCat.BackEnd
             }
 
         }
+        public static int getVisitID_To_Check_Payment(string patientName)
+        {
+
+            try
+            {
+                return ExecuteScalar<int>(@"SELECT 
+                            dbo.Visits.ID
+                            FROM dbo.Patients
+                            INNER JOIN
+                            dbo.Visits ON dbo.Patients.ID=dbo.Visits.PatientID where (Patients.Pat_WifeName='" + patientName + "') and (Visit_Reception_Time IS NULL) and ((dbo.Visits.Visit_State='1') or (dbo.Visits.Visit_State='0')) ");
+            }
+            catch
+            {
+                return 0;
+            }
+
+        }
         public static int getEnteredVisitID_By_Name(string patientName)
         {
 
@@ -230,7 +247,8 @@ namespace ClinicCat.BackEnd
         public static void MoveUp()
         {
             //move only if it is the first element
-            if (containerlist[1] != "0")
+            int minPriority = ExecuteScalar<int>(@"select MIN(Priority) from Visits");
+            if (containerlist[1] != minPriority.ToString())
             {
                 try
                 {

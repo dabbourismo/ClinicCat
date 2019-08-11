@@ -31,7 +31,7 @@ namespace ClinicCat.FrontEnd.Payments
                 }
                 else
                 {
-                    new frmPaymentCRUD(this, PaymentsLogic.EditButton(dataGridView1)).Show();
+                    new frmPaymentCRUD(this, PaymentsLogic.EditButton(dataGridView1),null,null).Show();
                 }
             }
         }

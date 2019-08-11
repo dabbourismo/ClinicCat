@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using static ClinicCat.BackEnd.Visit;
 using System.Text;
 using ClinicCat.BackEnd;
+using ClinicCat.FrontEnd.Patients;
+using System.Linq;
+using ClinicCat.FrontEnd.Payments;
+
 namespace ClinicCat.FrontEnd.Visits
 {
     public partial class frmVisits : Form
@@ -15,6 +19,11 @@ namespace ClinicCat.FrontEnd.Visits
             VisitsLogic.PopulateCheckedListBox(clbAdditionalServices);
             VisitsLogic.PopulateListBox(listbxWaitingQueue);
             cmbxVisitType.SelectedIndex = 0;
+            if (listbxWaitingQueue.Items.Count == 1)
+            {
+                btnUp.Enabled = false;
+                btnDown.Enabled = false;
+            }
         }
         //Get Patient Info
 
@@ -26,7 +35,31 @@ namespace ClinicCat.FrontEnd.Visits
                 try
                 {
                     VisitsLogic.PatientInfo(new List<TextBox>() { txtPatientID, txtPatientName, txtPatientPhone });
+                    //شوف لو علية فلوس
+                    //1-هات الفيزيت اي دي
 
+                    //2-هات الفلوس اللى علية بالفيزيت اي دي دة
+                    /*-------------------------------*/
+                    int visitID = getVisitID_To_Check_Payment(txtPatientName.Text);
+                    if (Payment.get_Required_Payment(visitID) != Payment.get_Previous_Payment(visitID))
+                    {
+                        DialogResult Dialog = MessageBox.Show("المريض علية فلوس هل تريد تدفع ؟", "تنبيه", MessageBoxButtons.YesNo);
+                        if (Dialog == DialogResult.Yes)
+                        {
+                            //افتح فورمه الدفع و باصيلها الفيزيت اي دي
+                            if (Application.OpenForms.OfType<frmPaymentCRUD>().Any())
+                            {
+                                return;
+                            }
+                            else
+                            {
+                                new frmPaymentCRUD(null,new List<string>(),visitID,int.Parse(txtPatientID.Text)).Show();
+                            }
+                        }
+                    }
+                    /*-------------------------------*/
+                    //disable textboxes
+                    ValidationMethods.Enable_DisableTextBoxes(new List<TextBox>() { txtPatientID, txtPatientName, txtPatientPhone }, false);
                     //check if reservation exists, if yes : insert reciption time
                     if (CheckForVisit(int.Parse(txtPatientID.Text)))
                     {
@@ -35,12 +68,33 @@ namespace ClinicCat.FrontEnd.Visits
                         {
                             RegisterVisit();
                             VisitsLogic.PopulateListBox(listbxWaitingQueue);
+                            BtnNewReservation_Click(sender, e);
+                            if (listbxWaitingQueue.Items.Count == 1)
+                            {
+                                btnUp.Enabled = false;
+                                btnDown.Enabled = false;
+                            }
+                            else
+                            {
+                                btnUp.Enabled = true;
+                                btnDown.Enabled = true;
+                            }
+                        }
+                        else
+                        {
+                            BtnNewReservation_Click(sender, e);
                         }
                     }
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("مريضة غير موجودة");
+                    DialogResult Dialog = MessageBox.Show("مريض غير موجود، هل تود اضافة هذا المريض الان؟", "تنبيه", MessageBoxButtons.YesNo);
+                    if (Dialog == DialogResult.Yes)
+                    {
+                        //افتح شاشة اضافة مريض (دوس على الزرار يعني)
+                        btnInsertPatient_Click(sender, e);
+                    }
+
                 }
 
 
@@ -50,6 +104,7 @@ namespace ClinicCat.FrontEnd.Visits
 
         private void BtnAddReservation_Click(object sender, EventArgs e)
         {
+
             // 0>(حجزت بالتليفون) 
             // 1>(انتظار أو حجزت عادي)
             // 2>(دخلت للدكتور)
@@ -64,21 +119,30 @@ namespace ClinicCat.FrontEnd.Visits
             {
 
                 if (Insert(int.Parse(txtPatientID.Text), dtpVisitDate.Value.ToString("yyyy-MM-dd"), visitType, chkIsPhone.Checked,
-                    additionalServices, visitState,numTotal.Value))
+                    additionalServices, visitState, numTotal.Value))
                 {
+                    //0-insert payment
                     int visitID = Payment.Get_VisitID_for_Payment(int.Parse(txtPatientID.Text));
                     if (visitID != 0)
                     {
                         Payment.InsertPayment(txtPatientName.Text, true, visitID, int.Parse(txtPatientID.Text), DateTime.Now.ToString("yyyy-MM-dd"),
-           numPayed.Value);
+                                                numPayed.Value);
+                        //1-populate list box
                         VisitsLogic.PopulateListBox(listbxWaitingQueue);
                     }
+                    //2-loop on textboxes and make them enabled
+                    BtnNewReservation_Click(sender, e);
                     MessageBox.Show("Success");
-                    //0-insert payment
-
-                    //1-loop on textboxes and make them empty
-                    //2-populate list box
-
+                    if (listbxWaitingQueue.Items.Count == 1)
+                    {
+                        btnUp.Enabled = false;
+                        btnDown.Enabled = false;
+                    }
+                    else
+                    {
+                        btnUp.Enabled = true;
+                        btnDown.Enabled = true;
+                    }
                 }
             }
             catch (Exception)
@@ -91,21 +155,39 @@ namespace ClinicCat.FrontEnd.Visits
         private void CmbxVisitType_SelectedIndexChanged(object sender, EventArgs e)
         {
             VisitsLogic.CalculateTotalRequired(cmbxVisitType, numTotal, clbAdditionalServices);
+
         }
 
         private void ClbAdditionalServices_SelectedIndexChanged(object sender, EventArgs e)
         {
             VisitsLogic.CalculateTotalRequired(cmbxVisitType, numTotal, clbAdditionalServices);
+
         }
 
         private void BtnUp_Click(object sender, EventArgs e)
         {
-            VisitsLogic.ChangePriority(listbxWaitingQueue, "up");
+            try
+            {
+                VisitsLogic.ChangePriority(listbxWaitingQueue, "up");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
         }
 
         private void BtnDown_Click(object sender, EventArgs e)
         {
-            VisitsLogic.ChangePriority(listbxWaitingQueue, "down");
+            try
+            {
+                VisitsLogic.ChangePriority(listbxWaitingQueue, "down");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
         }
 
         private void BtnDeleteVisit_Click(object sender, EventArgs e)
@@ -113,13 +195,82 @@ namespace ClinicCat.FrontEnd.Visits
             VisitsLogic.RemoveVisitFromListbox(listbxWaitingQueue);
         }
 
+        //اضافة مريض
         private void btnInsertPatient_Click(object sender, EventArgs e)
         {
+            if (Application.OpenForms.OfType<frmPatientsCRUD>().Any())
+            {
+                return;
+            }
+            else
+            {
+                new frmPatientsCRUD().Show();
+            }
+        }
+        //تعديل مريض
+        private void BtnUpdatePatient_Click(object sender, EventArgs e)
+        {
+            if (txtPatientID.TextLength > 0)
+            {
+                if (Application.OpenForms.OfType<frmPatientsCRUD>().Any())
+                {
+                    return;
+                }
+                else
+                {
+                    new frmPatientsCRUD(null,new List<string>(), int.Parse(txtPatientID.Text)).Show();
+                }
+            }
+
+        }
+
+
+        private void BtnNewReservation_Click(object sender, EventArgs e)
+        {
+            ValidationMethods.Enable_DisableTextBoxes(new List<TextBox>() { txtPatientID, txtPatientName, txtPatientPhone }, true);
+            ValidationMethods.ClearTextBoxes(new List<TextBox>() { txtPatientID, txtPatientName, txtPatientPhone });
+            cmbxVisitType.SelectedIndex = 0;
+            ValidationMethods.ClearCheckedListBoxSelection(clbAdditionalServices);
+            ValidationMethods.ClearNumericUpDown(new List<NumericUpDown>() { numDiscount, numPayed, numRemaining });
+        }
+        //calculate required
+
+
+
+
+        private void NumDiscount_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((numDiscount.Value > numTotal.Value) || (numDiscount.Value < 0))
+            {
+                numDiscount.Value = numTotal.Value;
+            }
+            numRequired.Value = numTotal.Value - numDiscount.Value;
+        }
+
+        private void NumDiscount_ValueChanged(object sender, EventArgs e)
+        {
+            if ((numDiscount.Value > numTotal.Value) || (numDiscount.Value < 0))
+            {
+                numDiscount.Value = numTotal.Value;
+            }
+            numRequired.Value = numTotal.Value - numDiscount.Value;
         }
 
         private void NumPayed_ValueChanged(object sender, EventArgs e)
         {
-            numRemaining.Value= numRequired.Value - numPayed.Value;
+            if ((numPayed.Value > numRequired.Value) || (numPayed.Value < 0))
+            {
+                numPayed.Value = numRequired.Value;
+            }
+            numRemaining.Value = numRequired.Value - numPayed.Value;
         }
+
+        private void NumTotal_ValueChanged(object sender, EventArgs e)
+        {
+            NumDiscount_ValueChanged(sender, e);
+            NumPayed_ValueChanged(sender, e);
+        }
+
+
     }
 }
