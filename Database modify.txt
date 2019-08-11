@@ -1,2 +1,2 @@
 ﻿//Reaname Column 'PatientID' to 'VisitID' in Table 'Attachments'
-
+//Change Data Type of Column VideoURL in Setting Table to VARBINARY(MAX)
