@@ -43,6 +43,11 @@
             this.btnInsertPatient = new System.Windows.Forms.Button();
             this.btnUpdatePatient = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.numRemaining = new System.Windows.Forms.NumericUpDown();
+            this.numRequired = new System.Windows.Forms.NumericUpDown();
+            this.numDiscount = new System.Windows.Forms.NumericUpDown();
+            this.numTotal = new System.Windows.Forms.NumericUpDown();
+            this.numPayed = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -58,21 +63,16 @@
             this.dtpVisitDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.numPayed = new System.Windows.Forms.NumericUpDown();
-            this.numTotal = new System.Windows.Forms.NumericUpDown();
-            this.numDiscount = new System.Windows.Forms.NumericUpDown();
-            this.numRequired = new System.Windows.Forms.NumericUpDown();
-            this.numRemaining = new System.Windows.Forms.NumericUpDown();
             this.groupbox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numRemaining)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numRequired)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDiscount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTotal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPayed)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numPayed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numTotal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numDiscount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numRequired)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numRemaining)).BeginInit();
             this.SuspendLayout();
             // 
             // groupbox1
@@ -176,9 +176,9 @@
             this.btnUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUp.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUp.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnUp.Location = new System.Drawing.Point(183, 470);
+            this.btnUp.Location = new System.Drawing.Point(189, 470);
             this.btnUp.Name = "btnUp";
-            this.btnUp.Size = new System.Drawing.Size(56, 37);
+            this.btnUp.Size = new System.Drawing.Size(50, 37);
             this.btnUp.TabIndex = 24;
             this.btnUp.Text = "فوق";
             this.btnUp.UseVisualStyleBackColor = false;
@@ -191,11 +191,11 @@
             this.btnDeleteVisit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteVisit.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteVisit.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnDeleteVisit.Location = new System.Drawing.Point(68, 470);
+            this.btnDeleteVisit.Location = new System.Drawing.Point(70, 470);
             this.btnDeleteVisit.Name = "btnDeleteVisit";
-            this.btnDeleteVisit.Size = new System.Drawing.Size(109, 37);
+            this.btnDeleteVisit.Size = new System.Drawing.Size(113, 37);
             this.btnDeleteVisit.TabIndex = 24;
-            this.btnDeleteVisit.Text = "مسح";
+            this.btnDeleteVisit.Text = "ازالة من قائمة الانتظار";
             this.btnDeleteVisit.UseVisualStyleBackColor = false;
             this.btnDeleteVisit.Click += new System.EventHandler(this.BtnDeleteVisit_Click);
             // 
@@ -208,7 +208,7 @@
             this.btnDown.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnDown.Location = new System.Drawing.Point(6, 470);
             this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(56, 37);
+            this.btnDown.Size = new System.Drawing.Size(58, 37);
             this.btnDown.TabIndex = 24;
             this.btnDown.Text = "تحت";
             this.btnDown.UseVisualStyleBackColor = false;
@@ -236,7 +236,7 @@
             this.btnInsertPatient.Name = "btnInsertPatient";
             this.btnInsertPatient.Size = new System.Drawing.Size(94, 29);
             this.btnInsertPatient.TabIndex = 19;
-            this.btnInsertPatient.Text = "(F1) إضافة";
+            this.btnInsertPatient.Text = "اضافة مريض";
             this.btnInsertPatient.UseVisualStyleBackColor = false;
             this.btnInsertPatient.Click += new System.EventHandler(this.btnInsertPatient_Click);
             // 
@@ -250,8 +250,9 @@
             this.btnUpdatePatient.Name = "btnUpdatePatient";
             this.btnUpdatePatient.Size = new System.Drawing.Size(94, 29);
             this.btnUpdatePatient.TabIndex = 20;
-            this.btnUpdatePatient.Text = "(F2) تعديل";
+            this.btnUpdatePatient.Text = "تعديل مريض";
             this.btnUpdatePatient.UseVisualStyleBackColor = false;
+            this.btnUpdatePatient.Click += new System.EventHandler(this.BtnUpdatePatient_Click);
             // 
             // groupBox3
             // 
@@ -275,6 +276,97 @@
             this.groupBox3.TabIndex = 21;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "المستحقات";
+            // 
+            // numRemaining
+            // 
+            this.numRemaining.Enabled = false;
+            this.numRemaining.Location = new System.Drawing.Point(21, 201);
+            this.numRemaining.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.numRemaining.Minimum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            -2147483648});
+            this.numRemaining.Name = "numRemaining";
+            this.numRemaining.Size = new System.Drawing.Size(98, 30);
+            this.numRemaining.TabIndex = 9;
+            // 
+            // numRequired
+            // 
+            this.numRequired.Enabled = false;
+            this.numRequired.Location = new System.Drawing.Point(21, 111);
+            this.numRequired.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.numRequired.Minimum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            -2147483648});
+            this.numRequired.Name = "numRequired";
+            this.numRequired.Size = new System.Drawing.Size(98, 30);
+            this.numRequired.TabIndex = 9;
+            // 
+            // numDiscount
+            // 
+            this.numDiscount.Location = new System.Drawing.Point(21, 74);
+            this.numDiscount.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.numDiscount.Minimum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            -2147483648});
+            this.numDiscount.Name = "numDiscount";
+            this.numDiscount.Size = new System.Drawing.Size(98, 30);
+            this.numDiscount.TabIndex = 9;
+            this.numDiscount.ValueChanged += new System.EventHandler(this.NumDiscount_ValueChanged);
+            // 
+            // numTotal
+            // 
+            this.numTotal.Enabled = false;
+            this.numTotal.Location = new System.Drawing.Point(21, 36);
+            this.numTotal.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.numTotal.Minimum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            -2147483648});
+            this.numTotal.Name = "numTotal";
+            this.numTotal.Size = new System.Drawing.Size(98, 30);
+            this.numTotal.TabIndex = 9;
+            this.numTotal.ValueChanged += new System.EventHandler(this.NumTotal_ValueChanged);
+            // 
+            // numPayed
+            // 
+            this.numPayed.Location = new System.Drawing.Point(21, 155);
+            this.numPayed.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.numPayed.Minimum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            -2147483648});
+            this.numPayed.Name = "numPayed";
+            this.numPayed.Size = new System.Drawing.Size(98, 30);
+            this.numPayed.TabIndex = 9;
+            this.numPayed.ValueChanged += new System.EventHandler(this.NumPayed_ValueChanged);
             // 
             // label11
             // 
@@ -334,6 +426,7 @@
             this.btnNewReservation.TabIndex = 22;
             this.btnNewReservation.Text = "حالة جديدة";
             this.btnNewReservation.UseVisualStyleBackColor = false;
+            this.btnNewReservation.Click += new System.EventHandler(this.BtnNewReservation_Click);
             // 
             // btnAddReservation
             // 
@@ -456,96 +549,6 @@
             this.label5.TabIndex = 24;
             this.label5.Text = "تاريخ الزيارة";
             // 
-            // numPayed
-            // 
-            this.numPayed.Location = new System.Drawing.Point(21, 155);
-            this.numPayed.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.numPayed.Minimum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            -2147483648});
-            this.numPayed.Name = "numPayed";
-            this.numPayed.Size = new System.Drawing.Size(98, 30);
-            this.numPayed.TabIndex = 9;
-            this.numPayed.ValueChanged += new System.EventHandler(this.NumPayed_ValueChanged);
-            // 
-            // numTotal
-            // 
-            this.numTotal.Location = new System.Drawing.Point(21, 36);
-            this.numTotal.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.numTotal.Minimum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            -2147483648});
-            this.numTotal.Name = "numTotal";
-            this.numTotal.Size = new System.Drawing.Size(98, 30);
-            this.numTotal.TabIndex = 9;
-            this.numTotal.ValueChanged += new System.EventHandler(this.NumPayed_ValueChanged);
-            // 
-            // numDiscount
-            // 
-            this.numDiscount.Location = new System.Drawing.Point(21, 74);
-            this.numDiscount.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.numDiscount.Minimum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            -2147483648});
-            this.numDiscount.Name = "numDiscount";
-            this.numDiscount.Size = new System.Drawing.Size(98, 30);
-            this.numDiscount.TabIndex = 9;
-            this.numDiscount.ValueChanged += new System.EventHandler(this.NumPayed_ValueChanged);
-            // 
-            // numRequired
-            // 
-            this.numRequired.Location = new System.Drawing.Point(21, 111);
-            this.numRequired.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.numRequired.Minimum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            -2147483648});
-            this.numRequired.Name = "numRequired";
-            this.numRequired.Size = new System.Drawing.Size(98, 30);
-            this.numRequired.TabIndex = 9;
-            this.numRequired.ValueChanged += new System.EventHandler(this.NumPayed_ValueChanged);
-            // 
-            // numRemaining
-            // 
-            this.numRemaining.Location = new System.Drawing.Point(21, 201);
-            this.numRemaining.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.numRemaining.Minimum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            -2147483648});
-            this.numRemaining.Name = "numRemaining";
-            this.numRemaining.Size = new System.Drawing.Size(98, 30);
-            this.numRemaining.TabIndex = 9;
-            this.numRemaining.ValueChanged += new System.EventHandler(this.NumPayed_ValueChanged);
-            // 
             // frmVisits
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 22F);
@@ -569,14 +572,14 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numRemaining)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numRequired)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDiscount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTotal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPayed)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numPayed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numTotal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numDiscount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numRequired)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numRemaining)).EndInit();
             this.ResumeLayout(false);
 
         }

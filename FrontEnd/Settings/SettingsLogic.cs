@@ -10,14 +10,17 @@ namespace ClinicCat.FrontEnd.Settings
     {
         public static void ShowPicture(string path,PictureBox picturebox)
         {
-            if (path.Length > 0)
-            {
-                picturebox.BackgroundImage = Resources.RightSign;
-            }
-            else
+            if (string.IsNullOrEmpty(path))
             {
                 picturebox.BackgroundImage = Resources.WrongSign;
             }
+            else
+            {
+                picturebox.BackgroundImage = Resources.RightSign;
+            }
+           
+            
+          
         }
     }
 }

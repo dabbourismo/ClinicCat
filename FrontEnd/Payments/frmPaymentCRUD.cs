@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClinicCat.BackEnd;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,8 +12,10 @@ namespace ClinicCat.FrontEnd.Payments
 {
     public partial class frmPaymentCRUD : Form
     {
-        frmPayments frmPayments;
-        List<string> parameters = new List<string>();
+        private frmPayments frmPayments;
+        private List<string> parameters = new List<string>();
+        private int? visitID;
+        private int? patientID;
         //اضافة مصروف خارجي
         public frmPaymentCRUD(frmPayments owner)
         {
@@ -33,13 +36,26 @@ namespace ClinicCat.FrontEnd.Payments
         //تعديل مصروف خارجي
 
         //دفع باقي فلوس العيان
-        public frmPaymentCRUD(frmPayments owner, List<string> parameters)
+        public frmPaymentCRUD(frmPayments owner, List<string> parameters, int? visitID, int? patientID)
         {
             InitializeComponent();
-            frmPayments = owner;
-            this.parameters = parameters;
-            numRequired.Value = get_Required_Payment(int.Parse(parameters[6]));
-            numPreviousPayed.Value = get_Previous_Payment(int.Parse(parameters[6]));
+            //من شاشة الدفع
+            if (owner != null && parameters.Count > 0)
+            {
+                frmPayments = owner;
+                this.parameters = parameters;
+                numRequired.Value = get_Required_Payment(int.Parse(parameters[6]));
+                numPreviousPayed.Value = get_Previous_Payment(int.Parse(parameters[6]));
+            }
+            //من شاشة الحجز
+            if (visitID.HasValue && patientID.HasValue)
+            {
+                this.visitID = visitID;
+                this.patientID = patientID;
+                numRequired.Value = get_Required_Payment(visitID.Value);
+                numPreviousPayed.Value = get_Previous_Payment(visitID.Value);
+            }
+
 
         }
 
@@ -50,7 +66,13 @@ namespace ClinicCat.FrontEnd.Payments
 
         private void BtnInsert_Click(object sender, EventArgs e)
         {
-            //مدفوع لمريض
+            //من شاشة الحجز
+            if (visitID.HasValue)
+            {
+                InsertPayment(Patient.getPatientName_By_ID(patientID.Value), true, visitID.Value, patientID.Value, DateTime.Now.ToString("yyyy-MM-dd"), numPayed.Value);
+                this.Close();
+            }
+            //مدفوع لمريض من شاشة الدفع
             if (parameters.Count > 0)
             {
                 if (get_Required_Payment(int.Parse(parameters[6])) == get_Previous_Payment(int.Parse(parameters[6])))

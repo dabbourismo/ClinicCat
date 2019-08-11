@@ -44,7 +44,7 @@ namespace ClinicCat.FrontEnd.Patients
                 }
                 else
                 {
-                    new frmPatientsCRUD(this, PatientsLogic.EditButton(dataGridView1)).Show();
+                    new frmPatientsCRUD(this, PatientsLogic.EditButton(dataGridView1),null).Show();
                 }
             }
         }
