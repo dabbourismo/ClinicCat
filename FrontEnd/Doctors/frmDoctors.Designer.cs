@@ -49,7 +49,6 @@
             this.txtNextVisitNotes = new System.Windows.Forms.TextBox();
             this.txtCurrentVisitNotes = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dtpReceptionTime = new System.Windows.Forms.DateTimePicker();
             this.dtpReserveTime = new System.Windows.Forms.DateTimePicker();
             this.chkEnableScanTime = new System.Windows.Forms.CheckBox();
@@ -57,8 +56,6 @@
             this.btnAddScans = new System.Windows.Forms.Button();
             this.btnAddPrescription = new System.Windows.Forms.Button();
             this.dtpScanTime = new System.Windows.Forms.DateTimePicker();
-            this.txtReceptionTime = new System.Windows.Forms.TextBox();
-            this.txtReserveTime = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.ofdChoosePicture = new System.Windows.Forms.OpenFileDialog();
             this.groupBox2.SuspendLayout();
@@ -66,13 +63,13 @@
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.btnEnterPatient);
             this.groupBox2.Controls.Add(this.listbxWaitingQueue);
             this.groupBox2.Font = new System.Drawing.Font("Tajawal", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -117,8 +114,8 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.groupBox1);
             this.groupBox3.Controls.Add(this.cmbxCategory);
             this.groupBox3.Controls.Add(this.txtPatientID);
@@ -138,12 +135,10 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox1.Controls.Add(this.btnPreviousVisits);
             this.groupBox1.Controls.Add(this.btnShowDetails);
             this.groupBox1.Font = new System.Drawing.Font("Tajawal", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(6, 13);
+            this.groupBox1.Location = new System.Drawing.Point(5, 9);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.groupBox1.Size = new System.Drawing.Size(185, 117);
@@ -153,30 +148,28 @@
             // 
             // btnPreviousVisits
             // 
-            this.btnPreviousVisits.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPreviousVisits.BackColor = System.Drawing.Color.Crimson;
+            this.btnPreviousVisits.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnPreviousVisits.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPreviousVisits.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPreviousVisits.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnPreviousVisits.Location = new System.Drawing.Point(16, 67);
+            this.btnPreviousVisits.Location = new System.Drawing.Point(3, 74);
             this.btnPreviousVisits.Name = "btnPreviousVisits";
-            this.btnPreviousVisits.Size = new System.Drawing.Size(163, 44);
+            this.btnPreviousVisits.Size = new System.Drawing.Size(179, 40);
             this.btnPreviousVisits.TabIndex = 28;
             this.btnPreviousVisits.Text = "الزيارات السابقة";
             this.btnPreviousVisits.UseVisualStyleBackColor = false;
             // 
             // btnShowDetails
             // 
-            this.btnShowDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnShowDetails.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            this.btnShowDetails.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnShowDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShowDetails.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowDetails.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnShowDetails.Location = new System.Drawing.Point(16, 18);
+            this.btnShowDetails.Location = new System.Drawing.Point(3, 22);
             this.btnShowDetails.Name = "btnShowDetails";
-            this.btnShowDetails.Size = new System.Drawing.Size(163, 44);
+            this.btnShowDetails.Size = new System.Drawing.Size(179, 40);
             this.btnShowDetails.TabIndex = 28;
             this.btnShowDetails.Text = "عرض بيانات المريضة";
             this.btnShowDetails.UseVisualStyleBackColor = false;
@@ -203,7 +196,6 @@
             this.txtPatientID.ReadOnly = true;
             this.txtPatientID.Size = new System.Drawing.Size(149, 30);
             this.txtPatientID.TabIndex = 1;
-            this.txtPatientID.Text = "1";
             // 
             // txtPatientName
             // 
@@ -269,7 +261,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(428, 26);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(113, 22);
+            this.label9.Size = new System.Drawing.Size(114, 22);
             this.label9.TabIndex = 1;
             this.label9.Text = "ملاحظات الزيارة";
             // 
@@ -278,14 +270,15 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(84, 26);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(164, 22);
+            this.label3.Size = new System.Drawing.Size(165, 22);
             this.label3.TabIndex = 3;
             this.label3.Text = "ملاحظات الزيارة القادمة";
             // 
             // groupBox4
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.txtNextVisitNotes);
             this.groupBox4.Controls.Add(this.txtCurrentVisitNotes);
             this.groupBox4.Controls.Add(this.label3);
@@ -301,9 +294,8 @@
             // 
             // txtNextVisitNotes
             // 
-            this.txtNextVisitNotes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNextVisitNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.txtNextVisitNotes.Location = new System.Drawing.Point(6, 51);
             this.txtNextVisitNotes.Multiline = true;
             this.txtNextVisitNotes.Name = "txtNextVisitNotes";
@@ -312,8 +304,7 @@
             // 
             // txtCurrentVisitNotes
             // 
-            this.txtCurrentVisitNotes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtCurrentVisitNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCurrentVisitNotes.Location = new System.Drawing.Point(332, 51);
             this.txtCurrentVisitNotes.Multiline = true;
@@ -323,9 +314,8 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox5.Controls.Add(this.pictureBox1);
             this.groupBox5.Controls.Add(this.dtpReceptionTime);
             this.groupBox5.Controls.Add(this.dtpReserveTime);
             this.groupBox5.Controls.Add(this.chkEnableScanTime);
@@ -333,8 +323,6 @@
             this.groupBox5.Controls.Add(this.btnAddScans);
             this.groupBox5.Controls.Add(this.btnAddPrescription);
             this.groupBox5.Controls.Add(this.dtpScanTime);
-            this.groupBox5.Controls.Add(this.txtReceptionTime);
-            this.groupBox5.Controls.Add(this.txtReserveTime);
             this.groupBox5.Controls.Add(this.label10);
             this.groupBox5.Controls.Add(this.label11);
             this.groupBox5.Controls.Add(this.label2);
@@ -347,21 +335,13 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "بيانات الحجز";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(164, 131);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.TabIndex = 33;
-            this.pictureBox1.TabStop = false;
-            // 
             // dtpReceptionTime
             // 
             this.dtpReceptionTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpReceptionTime.CustomFormat = "yyyy-MM-dd";
             this.dtpReceptionTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpReceptionTime.Location = new System.Drawing.Point(201, 72);
+            this.dtpReceptionTime.Location = new System.Drawing.Point(356, 72);
             this.dtpReceptionTime.Name = "dtpReceptionTime";
             this.dtpReceptionTime.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dtpReceptionTime.RightToLeftLayout = true;
@@ -374,7 +354,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpReserveTime.CustomFormat = "yyyy-MM-dd";
             this.dtpReserveTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpReserveTime.Location = new System.Drawing.Point(201, 36);
+            this.dtpReserveTime.Location = new System.Drawing.Point(356, 36);
             this.dtpReserveTime.Name = "dtpReserveTime";
             this.dtpReserveTime.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dtpReserveTime.RightToLeftLayout = true;
@@ -452,30 +432,6 @@
             this.dtpScanTime.Size = new System.Drawing.Size(190, 30);
             this.dtpScanTime.TabIndex = 5;
             // 
-            // txtReceptionTime
-            // 
-            this.txtReceptionTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtReceptionTime.BackColor = System.Drawing.SystemColors.Control;
-            this.txtReceptionTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtReceptionTime.Location = new System.Drawing.Point(348, 72);
-            this.txtReceptionTime.Name = "txtReceptionTime";
-            this.txtReceptionTime.ReadOnly = true;
-            this.txtReceptionTime.Size = new System.Drawing.Size(149, 30);
-            this.txtReceptionTime.TabIndex = 4;
-            // 
-            // txtReserveTime
-            // 
-            this.txtReserveTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtReserveTime.BackColor = System.Drawing.SystemColors.Control;
-            this.txtReserveTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtReserveTime.Location = new System.Drawing.Point(348, 35);
-            this.txtReserveTime.Name = "txtReserveTime";
-            this.txtReserveTime.ReadOnly = true;
-            this.txtReserveTime.Size = new System.Drawing.Size(149, 30);
-            this.txtReserveTime.TabIndex = 4;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -516,7 +472,6 @@
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -545,8 +500,6 @@
         private System.Windows.Forms.TextBox txtCurrentVisitNotes;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.DateTimePicker dtpScanTime;
-        private System.Windows.Forms.TextBox txtReceptionTime;
-        private System.Windows.Forms.TextBox txtReserveTime;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAddPrescription;
         private System.Windows.Forms.Button btnAddScans;
@@ -555,6 +508,5 @@
         private System.Windows.Forms.DateTimePicker dtpReceptionTime;
         private System.Windows.Forms.DateTimePicker dtpReserveTime;
         private System.Windows.Forms.OpenFileDialog ofdChoosePicture;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -11,7 +11,6 @@ namespace ClinicCat.FrontEnd.Patients
         private List<string> parameters = new List<string>();
         private List<string> details;
         private int? patientID;
-        bool edit = false;
         //add constructor
         public frmPatientsCRUD()
         {
@@ -45,7 +44,6 @@ namespace ClinicCat.FrontEnd.Patients
                 details = new List<string>();
                 details = Details(patientID.Value);
                 btnCRUD.Text = "(Enter) تعديل";
-                 edit = true;
             }
             if (patientID.HasValue || parameters.Count > 0)
             {
@@ -89,11 +87,22 @@ namespace ClinicCat.FrontEnd.Patients
 
         private void BtnCRUD_Click(object sender, EventArgs e)
         {
-            if (parameters.Count > 0|| edit)
+            int patientid;
+            if (parameters.Count > 0 || patientID.HasValue)
             {
+                //تعديل من شاشة الحجز              
+                if (patientID.HasValue)
+                {
+                    patientid = this.patientID.Value;
+                }
+                //تعديل من شاشة المرضى
+                else
+                {
+                    patientid = int.Parse(parameters[0]);
+                }
                 try
                 {
-                    if (Edit(int.Parse(parameters[0]), cmbxCategoryName.Text, txtWifeName.Text, txtWifePhone.Text,
+                    if (Edit(patientid, cmbxCategoryName.Text, txtWifeName.Text, txtWifePhone.Text,
                         byte.Parse(txtWifeAge.Text), txtWifeJob.Text, dtpWifeBirthDate.Value.ToString("yyyy-MM-dd"),
                         byte.Parse(numMarryCurrent.Value.ToString()), byte.Parse(numNumOfKids.Value.ToString()),
                         txtAddress.Text, txtEmail.Text, chkDidMarry.Checked, byte.Parse(numOldMarryPeriod.Value.ToString()),

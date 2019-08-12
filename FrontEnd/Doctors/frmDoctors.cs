@@ -98,7 +98,6 @@ namespace ClinicCat.FrontEnd.Doctors
         {
             
         }
-        string fileName;
         private void BtnAddScans_Click(object sender, EventArgs e)
         {
             int patientID = int.Parse(txtPatientID.Text);

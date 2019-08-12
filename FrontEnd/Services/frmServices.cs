@@ -11,6 +11,7 @@ namespace ClinicCat.FrontEnd.Services
         {
             InitializeComponent();
             this.dataGridView1.DataSource = getServices();
+            this.dataGridView1.Columns[0].Visible = false;
         }
 
         private void BtnUpdate_Click(object sender, EventArgs e)

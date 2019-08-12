@@ -65,8 +65,17 @@ namespace ClinicCat.BackEnd
             {
                 try
                 {
-                    ExecuteNonQuery(@"update Visits set Visit_State='3', Visit_Next_Notes='" + nextVisitNotes + "',Visit_Current_Notes='" + currentVisitNotes + "',Visit_Scan_Time='" + visitScanTime + "',Priority=NULL where ID='" + visitID + "'");
-                    return true;
+                    if (string.IsNullOrEmpty(visitScanTime))
+                    {
+                        ExecuteNonQuery(@"update Visits set Visit_State='3', Visit_Next_Notes='" + nextVisitNotes + "',Visit_Current_Notes='" + currentVisitNotes + "',Priority=NULL where ID='" + visitID + "'");
+                        return true;
+
+                    }
+                    else
+                    {
+                        ExecuteNonQuery(@"update Visits set Visit_State='3', Visit_Next_Notes='" + nextVisitNotes + "',Visit_Current_Notes='" + currentVisitNotes + "',Visit_Scan_Time='" + visitScanTime + "',Priority=NULL where ID='" + visitID + "'");
+                        return true;
+                    }
                 }
                 catch (Exception)
                 {

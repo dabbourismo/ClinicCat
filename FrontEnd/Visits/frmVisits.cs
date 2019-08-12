@@ -53,7 +53,7 @@ namespace ClinicCat.FrontEnd.Visits
                             }
                             else
                             {
-                                new frmPaymentCRUD(null,new List<string>(),visitID,int.Parse(txtPatientID.Text)).Show();
+                                new frmPaymentCRUD(null, new List<string>(), visitID, int.Parse(txtPatientID.Text)).Show();
                             }
                         }
                     }
@@ -119,14 +119,14 @@ namespace ClinicCat.FrontEnd.Visits
             {
 
                 if (Insert(int.Parse(txtPatientID.Text), dtpVisitDate.Value.ToString("yyyy-MM-dd"), visitType, chkIsPhone.Checked,
-                    additionalServices, visitState, Decimal.Parse(textBox3.Text)))
+                    additionalServices, visitState, Decimal.Parse(txtRequired.Text)))
                 {
                     //0-insert payment
                     int visitID = Payment.Get_VisitID_for_Payment(int.Parse(txtPatientID.Text));
                     if (visitID != 0)
                     {
                         Payment.InsertPayment(txtPatientName.Text, true, visitID, int.Parse(txtPatientID.Text), DateTime.Now.ToString("yyyy-MM-dd"),
-                                                Decimal.Parse(textBox4.Text));
+                                                Decimal.Parse(txtPayed.Text));
                         //1-populate list box
                         VisitsLogic.PopulateListBox(listbxWaitingQueue);
                     }
@@ -155,13 +155,13 @@ namespace ClinicCat.FrontEnd.Visits
 
         private void CmbxVisitType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            VisitsLogic.CalculateTotalRequired(cmbxVisitType, textBox1, clbAdditionalServices);
+            VisitsLogic.CalculateTotalRequired(cmbxVisitType, txtTotal, clbAdditionalServices);
 
         }
 
         private void ClbAdditionalServices_SelectedIndexChanged(object sender, EventArgs e)
         {
-            VisitsLogic.CalculateTotalRequired(cmbxVisitType, textBox1, clbAdditionalServices);
+            VisitsLogic.CalculateTotalRequired(cmbxVisitType, txtTotal, clbAdditionalServices);
 
         }
 
@@ -219,10 +219,10 @@ namespace ClinicCat.FrontEnd.Visits
                 }
                 else
                 {
-                    new frmPatientsCRUD(null,new List<string>(), int.Parse(txtPatientID.Text)).Show();
+                    new frmPatientsCRUD(null, new List<string>(), int.Parse(txtPatientID.Text)).Show();
                 }
             }
-
+            VisitsLogic.PatientInfo(new List<TextBox>() { txtPatientID, txtPatientName, txtPatientPhone });
         }
 
 
@@ -232,8 +232,8 @@ namespace ClinicCat.FrontEnd.Visits
             ValidationMethods.ClearTextBoxes(new List<TextBox>() { txtPatientID, txtPatientName, txtPatientPhone });
             cmbxVisitType.SelectedIndex = 0;
             ValidationMethods.ClearCheckedListBoxSelection(clbAdditionalServices);
-            ValidationMethods.ClearTextBoxesNumbers(new List<TextBox>() { textBox2, textBox4, textBox5 });
-            VisitsLogic.CalculateTotalRequired(cmbxVisitType, textBox1, clbAdditionalServices);
+            ValidationMethods.ClearTextBoxesNumbers(new List<TextBox>() { txtDiscount, txtPayed, txtRemaining });
+            VisitsLogic.CalculateTotalRequired(cmbxVisitType, txtTotal, clbAdditionalServices);
 
         }
         //calculate required
@@ -243,89 +243,87 @@ namespace ClinicCat.FrontEnd.Visits
 
         private void NumDiscount_KeyDown(object sender, KeyEventArgs e)
         {
-            if ((Decimal.Parse(textBox2.Text) > Decimal.Parse(textBox1.Text)) || (Decimal.Parse(textBox2.Text) < 0))
+            if ((Decimal.Parse(txtDiscount.Text) > Decimal.Parse(txtTotal.Text)) || (Decimal.Parse(txtDiscount.Text) < 0))
             {
-                textBox2.Text = textBox1.Text;
+                txtDiscount.Text = txtTotal.Text;
             }
-            textBox3.Text = (Decimal.Parse(textBox1.Text) - Decimal.Parse(textBox2.Text)).ToString();
+            txtRequired.Text = (Decimal.Parse(txtTotal.Text) - Decimal.Parse(txtDiscount.Text)).ToString();
         }
 
-  
 
-    
 
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+
+
+        private void txtTotal_KeyPress(object sender, KeyPressEventArgs e)
         {
-            NumberValidation(sender, e);
-
-        }
-
-        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            NumberValidation(sender, e);
+            ValidationMethods.NumberValidation(sender, e);
 
         }
 
-        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtDiscount_KeyPress(object sender, KeyPressEventArgs e)
         {
-            NumberValidation(sender, e);
+            ValidationMethods.NumberValidation(sender, e);
 
         }
 
-        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtRequired_KeyPress(object sender, KeyPressEventArgs e)
         {
-            NumberValidation(sender, e);
+            ValidationMethods.NumberValidation(sender, e);
 
         }
 
-        private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtPayed_KeyPress(object sender, KeyPressEventArgs e)
         {
-            NumberValidation(sender, e);
+            ValidationMethods.NumberValidation(sender, e);
 
         }
-        void NumberValidation(object sender, KeyPressEventArgs e)
+
+        private void txtRemaining_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ((e.KeyChar >= 48 && e.KeyChar <= 57) || e.KeyChar == 46)
+            ValidationMethods.NumberValidation(sender, e);
+
+        }
+
+
+        private void txtTotal_TextChanged(object sender, EventArgs e)
+        {
+            txtDiscount_TextChanged(sender, e);
+            txtPayed_TextChanged(sender, e);
+        }
+
+        private void txtDiscount_TextChanged(object sender, EventArgs e)
+        {
+            if (txtDiscount.TextLength == 0)
             {
-                e.Handled = false;
+                txtDiscount.Text = "0";
             }
-            else
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            textBox2_TextChanged(sender, e);
-            textBox4_TextChanged(sender, e);
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
             try
             {
-                if ((Decimal.Parse(textBox2.Text) > Decimal.Parse(textBox1.Text)) || (Decimal.Parse(textBox2.Text) < 0))
+                if ((Decimal.Parse(txtDiscount.Text) > Decimal.Parse(txtTotal.Text)) || (Decimal.Parse(txtDiscount.Text) < 0))
                 {
-                    textBox2.Text = textBox1.Text;
+                    txtDiscount.Text = txtTotal.Text;
                 }
-                textBox3.Text = (Decimal.Parse(textBox1.Text) - Decimal.Parse(textBox2.Text)).ToString();
+                txtRequired.Text = (Decimal.Parse(txtTotal.Text) - Decimal.Parse(txtDiscount.Text)).ToString();
             }
             catch { }
-            }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-            if ((Decimal.Parse(textBox4.Text) > Decimal.Parse(textBox3.Text)) || (Decimal.Parse(textBox4.Text) < 0))
-            {
-                textBox4.Text = textBox3.Text;
-            }
-            textBox5.Text = (Decimal.Parse(textBox3.Text) - Decimal.Parse(textBox4.Text)).ToString();
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
+        private void txtPayed_TextChanged(object sender, EventArgs e)
         {
-            textBox4.Text = textBox3.Text;
+            if (txtDiscount.TextLength == 0)
+            {
+                txtDiscount.Text = "0";
+            }
+            if ((Decimal.Parse(txtPayed.Text) > Decimal.Parse(txtRequired.Text)) || (Decimal.Parse(txtPayed.Text) < 0))
+            {
+                txtPayed.Text = txtRequired.Text;
+            }
+            txtRemaining.Text = (Decimal.Parse(txtRequired.Text) - Decimal.Parse(txtPayed.Text)).ToString();
+        }
+
+        private void txtRequired_TextChanged(object sender, EventArgs e)
+        {
+            txtPayed.Text = txtRequired.Text;
         }
     }
 }

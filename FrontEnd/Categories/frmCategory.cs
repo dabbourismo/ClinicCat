@@ -15,6 +15,7 @@ namespace ClinicCat.FrontEnd.Categories
         {
             InitializeComponent();
             this.dataGridView1.DataSource = getCategories();
+            this.dataGridView1.Columns[0].Visible = false;
         }
         //add button
         private void BtnInsert_Click(object sender, EventArgs e)
