@@ -86,7 +86,7 @@ namespace ClinicCat.FrontEnd.Visits
                         }
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     DialogResult Dialog = MessageBox.Show("مريض غير موجود، هل تود اضافة هذا المريض الان؟", "تنبيه", MessageBoxButtons.YesNo);
                     if (Dialog == DialogResult.Yes)
@@ -119,20 +119,20 @@ namespace ClinicCat.FrontEnd.Visits
             {
 
                 if (Insert(int.Parse(txtPatientID.Text), dtpVisitDate.Value.ToString("yyyy-MM-dd"), visitType, chkIsPhone.Checked,
-                    additionalServices, visitState, numTotal.Value))
+                    additionalServices, visitState, Decimal.Parse(textBox1.Text)))
                 {
                     //0-insert payment
                     int visitID = Payment.Get_VisitID_for_Payment(int.Parse(txtPatientID.Text));
                     if (visitID != 0)
                     {
                         Payment.InsertPayment(txtPatientName.Text, true, visitID, int.Parse(txtPatientID.Text), DateTime.Now.ToString("yyyy-MM-dd"),
-                                                numPayed.Value);
+                                                Decimal.Parse(textBox4.Text));
                         //1-populate list box
                         VisitsLogic.PopulateListBox(listbxWaitingQueue);
                     }
                     //2-loop on textboxes and make them enabled
                     BtnNewReservation_Click(sender, e);
-                    MessageBox.Show("Success");
+                    MessageBox.Show("تم الحجز بنجاح");
                     if (listbxWaitingQueue.Items.Count == 1)
                     {
                         btnUp.Enabled = false;
@@ -144,6 +144,7 @@ namespace ClinicCat.FrontEnd.Visits
                         btnDown.Enabled = true;
                     }
                 }
+                else { MessageBox.Show("يوجد حجز مفتوح لنفس الحالة"); }
             }
             catch (Exception)
             {
@@ -154,13 +155,13 @@ namespace ClinicCat.FrontEnd.Visits
 
         private void CmbxVisitType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            VisitsLogic.CalculateTotalRequired(cmbxVisitType, numTotal, clbAdditionalServices);
+            VisitsLogic.CalculateTotalRequired(cmbxVisitType, textBox1, clbAdditionalServices);
 
         }
 
         private void ClbAdditionalServices_SelectedIndexChanged(object sender, EventArgs e)
         {
-            VisitsLogic.CalculateTotalRequired(cmbxVisitType, numTotal, clbAdditionalServices);
+            VisitsLogic.CalculateTotalRequired(cmbxVisitType, textBox1, clbAdditionalServices);
 
         }
 
@@ -231,7 +232,7 @@ namespace ClinicCat.FrontEnd.Visits
             ValidationMethods.ClearTextBoxes(new List<TextBox>() { txtPatientID, txtPatientName, txtPatientPhone });
             cmbxVisitType.SelectedIndex = 0;
             ValidationMethods.ClearCheckedListBoxSelection(clbAdditionalServices);
-            ValidationMethods.ClearNumericUpDown(new List<NumericUpDown>() { numDiscount, numPayed, numRemaining });
+            ValidationMethods.ClearTextBoxesNumbers(new List<TextBox>() { textBox2, textBox4, textBox5 });
         }
         //calculate required
 
@@ -240,37 +241,89 @@ namespace ClinicCat.FrontEnd.Visits
 
         private void NumDiscount_KeyDown(object sender, KeyEventArgs e)
         {
-            if ((numDiscount.Value > numTotal.Value) || (numDiscount.Value < 0))
+            if ((Decimal.Parse(textBox2.Text) > Decimal.Parse(textBox1.Text)) || (Decimal.Parse(textBox2.Text) < 0))
             {
-                numDiscount.Value = numTotal.Value;
+                textBox2.Text = textBox1.Text;
             }
-            numRequired.Value = numTotal.Value - numDiscount.Value;
+            textBox3.Text = (Decimal.Parse(textBox1.Text) - Decimal.Parse(textBox2.Text)).ToString();
         }
 
-        private void NumDiscount_ValueChanged(object sender, EventArgs e)
+  
+
+    
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ((numDiscount.Value > numTotal.Value) || (numDiscount.Value < 0))
+            NumberValidation(sender, e);
+
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            NumberValidation(sender, e);
+
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            NumberValidation(sender, e);
+
+        }
+
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            NumberValidation(sender, e);
+
+        }
+
+        private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            NumberValidation(sender, e);
+
+        }
+        void NumberValidation(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 48 && e.KeyChar <= 57) || e.KeyChar == 46)
             {
-                numDiscount.Value = numTotal.Value;
+                e.Handled = false;
             }
-            numRequired.Value = numTotal.Value - numDiscount.Value;
-        }
-
-        private void NumPayed_ValueChanged(object sender, EventArgs e)
-        {
-            if ((numPayed.Value > numRequired.Value) || (numPayed.Value < 0))
+            else
             {
-                numPayed.Value = numRequired.Value;
+                e.Handled = true;
             }
-            numRemaining.Value = numRequired.Value - numPayed.Value;
         }
 
-        private void NumTotal_ValueChanged(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            NumDiscount_ValueChanged(sender, e);
-            NumPayed_ValueChanged(sender, e);
+            textBox2_TextChanged(sender, e);
+            textBox4_TextChanged(sender, e);
         }
 
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if ((Decimal.Parse(textBox2.Text) > Decimal.Parse(textBox1.Text)) || (Decimal.Parse(textBox2.Text) < 0))
+                {
+                    textBox2.Text = textBox1.Text;
+                }
+                textBox3.Text = (Decimal.Parse(textBox1.Text) - Decimal.Parse(textBox2.Text)).ToString();
+            }
+            catch { }
+            }
 
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            if ((Decimal.Parse(textBox4.Text) > Decimal.Parse(textBox3.Text)) || (Decimal.Parse(textBox4.Text) < 0))
+            {
+                textBox4.Text = textBox3.Text;
+            }
+            textBox5.Text = (Decimal.Parse(textBox3.Text) - Decimal.Parse(textBox4.Text)).ToString();
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            textBox4.Text = textBox3.Text;
+        }
     }
 }

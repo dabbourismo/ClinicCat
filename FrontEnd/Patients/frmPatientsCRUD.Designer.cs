@@ -53,6 +53,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.txtHusbandSmokingType = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtusbandRelation = new System.Windows.Forms.TextBox();
@@ -71,7 +72,6 @@
             this.label21 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnCRUD = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupbox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numOldMarryPeriod)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numNumOfKids)).BeginInit();
@@ -116,7 +116,7 @@
             // 
             // numOldMarryPeriod
             // 
-            this.numOldMarryPeriod.Location = new System.Drawing.Point(143, 443);
+            this.numOldMarryPeriod.Location = new System.Drawing.Point(143, 441);
             this.numOldMarryPeriod.Name = "numOldMarryPeriod";
             this.numOldMarryPeriod.Size = new System.Drawing.Size(76, 30);
             this.numOldMarryPeriod.TabIndex = 24;
@@ -124,7 +124,7 @@
             // chkDidMarry
             // 
             this.chkDidMarry.AutoSize = true;
-            this.chkDidMarry.Location = new System.Drawing.Point(13, 391);
+            this.chkDidMarry.Location = new System.Drawing.Point(241, 404);
             this.chkDidMarry.Name = "chkDidMarry";
             this.chkDidMarry.Size = new System.Drawing.Size(114, 26);
             this.chkDidMarry.TabIndex = 23;
@@ -170,7 +170,7 @@
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(226, 415);
+            this.label12.Location = new System.Drawing.Point(226, 443);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(133, 22);
             this.label12.TabIndex = 19;
@@ -240,7 +240,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(282, 146);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(87, 22);
+            this.label6.Size = new System.Drawing.Size(86, 22);
             this.label6.TabIndex = 19;
             this.label6.Text = "تاريخ الميلاد";
             // 
@@ -359,6 +359,18 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "بيانات الزوج";
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "HH:mm tt";
+            this.dateTimePicker1.Font = new System.Drawing.Font("Droid Arabic Kufi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(48, 385);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.dateTimePicker1.ShowUpDown = true;
+            this.dateTimePicker1.Size = new System.Drawing.Size(180, 32);
+            this.dateTimePicker1.TabIndex = 32;
+            // 
             // txtHusbandSmokingType
             // 
             this.txtHusbandSmokingType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -440,7 +452,7 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(282, 107);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(87, 22);
+            this.label17.Size = new System.Drawing.Size(86, 22);
             this.label17.TabIndex = 19;
             this.label17.Text = "تاريخ الميلاد";
             // 
@@ -538,18 +550,6 @@
             this.btnCRUD.Text = "(Enter) إضافة";
             this.btnCRUD.UseVisualStyleBackColor = false;
             this.btnCRUD.Click += new System.EventHandler(this.BtnCRUD_Click);
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CustomFormat = "HH:mm tt";
-            this.dateTimePicker1.Font = new System.Drawing.Font("Droid Arabic Kufi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(48, 385);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.dateTimePicker1.ShowUpDown = true;
-            this.dateTimePicker1.Size = new System.Drawing.Size(180, 32);
-            this.dateTimePicker1.TabIndex = 32;
             // 
             // frmPatientsCRUD
             // 

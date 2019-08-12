@@ -11,6 +11,7 @@ namespace ClinicCat.FrontEnd.Patients
         private List<string> parameters = new List<string>();
         private List<string> details;
         private int? patientID;
+        bool edit = false;
         //add constructor
         public frmPatientsCRUD()
         {
@@ -43,6 +44,8 @@ namespace ClinicCat.FrontEnd.Patients
                 this.patientID = patientID;
                 details = new List<string>();
                 details = Details(patientID.Value);
+                btnCRUD.Text = "(Enter) تعديل";
+                 edit = true;
             }
             if (patientID.HasValue || parameters.Count > 0)
             {
@@ -86,7 +89,7 @@ namespace ClinicCat.FrontEnd.Patients
 
         private void BtnCRUD_Click(object sender, EventArgs e)
         {
-            if (parameters.Count > 0)
+            if (parameters.Count > 0|| edit)
             {
                 try
                 {
@@ -132,6 +135,7 @@ namespace ClinicCat.FrontEnd.Patients
             //add
             else
             {
+
                 try
                 {
                     if (Insert(cmbxCategoryName.Text, txtWifeName.Text, txtWifePhone.Text,

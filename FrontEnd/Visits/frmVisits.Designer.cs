@@ -43,11 +43,11 @@
             this.btnInsertPatient = new System.Windows.Forms.Button();
             this.btnUpdatePatient = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.numRemaining = new System.Windows.Forms.NumericUpDown();
-            this.numRequired = new System.Windows.Forms.NumericUpDown();
-            this.numDiscount = new System.Windows.Forms.NumericUpDown();
-            this.numTotal = new System.Windows.Forms.NumericUpDown();
-            this.numPayed = new System.Windows.Forms.NumericUpDown();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -66,11 +66,6 @@
             this.groupbox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numRemaining)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numRequired)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numDiscount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numTotal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numPayed)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.SuspendLayout();
@@ -230,11 +225,11 @@
             // 
             this.btnInsertPatient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
             this.btnInsertPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInsertPatient.Font = new System.Drawing.Font("Tajawal", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInsertPatient.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInsertPatient.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnInsertPatient.Location = new System.Drawing.Point(145, 83);
+            this.btnInsertPatient.Location = new System.Drawing.Point(131, 83);
             this.btnInsertPatient.Name = "btnInsertPatient";
-            this.btnInsertPatient.Size = new System.Drawing.Size(94, 29);
+            this.btnInsertPatient.Size = new System.Drawing.Size(108, 37);
             this.btnInsertPatient.TabIndex = 19;
             this.btnInsertPatient.Text = "اضافة مريض";
             this.btnInsertPatient.UseVisualStyleBackColor = false;
@@ -244,11 +239,11 @@
             // 
             this.btnUpdatePatient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
             this.btnUpdatePatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdatePatient.Font = new System.Drawing.Font("Tajawal", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdatePatient.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdatePatient.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnUpdatePatient.Location = new System.Drawing.Point(6, 83);
             this.btnUpdatePatient.Name = "btnUpdatePatient";
-            this.btnUpdatePatient.Size = new System.Drawing.Size(94, 29);
+            this.btnUpdatePatient.Size = new System.Drawing.Size(109, 37);
             this.btnUpdatePatient.TabIndex = 20;
             this.btnUpdatePatient.Text = "تعديل مريض";
             this.btnUpdatePatient.UseVisualStyleBackColor = false;
@@ -258,115 +253,96 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox3.Controls.Add(this.numRemaining);
-            this.groupBox3.Controls.Add(this.numRequired);
-            this.groupBox3.Controls.Add(this.numDiscount);
-            this.groupBox3.Controls.Add(this.numTotal);
-            this.groupBox3.Controls.Add(this.numPayed);
+            this.groupBox3.Controls.Add(this.textBox5);
+            this.groupBox3.Controls.Add(this.textBox4);
+            this.groupBox3.Controls.Add(this.textBox3);
+            this.groupBox3.Controls.Add(this.textBox2);
+            this.groupBox3.Controls.Add(this.textBox1);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(6, 118);
+            this.groupBox3.Location = new System.Drawing.Point(6, 126);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.groupBox3.Size = new System.Drawing.Size(233, 360);
+            this.groupBox3.Size = new System.Drawing.Size(233, 352);
             this.groupBox3.TabIndex = 21;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "المستحقات";
             // 
-            // numRemaining
+            // textBox5
             // 
-            this.numRemaining.Enabled = false;
-            this.numRemaining.Location = new System.Drawing.Point(21, 201);
-            this.numRemaining.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.numRemaining.Minimum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            -2147483648});
-            this.numRemaining.Name = "numRemaining";
-            this.numRemaining.Size = new System.Drawing.Size(98, 30);
-            this.numRemaining.TabIndex = 9;
+            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox5.Enabled = false;
+            this.textBox5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox5.ForeColor = System.Drawing.Color.DarkMagenta;
+            this.textBox5.Location = new System.Drawing.Point(6, 198);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textBox5.Size = new System.Drawing.Size(135, 27);
+            this.textBox5.TabIndex = 23;
+            this.textBox5.Text = "0";
+            this.textBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox5_KeyPress);
             // 
-            // numRequired
+            // textBox4
             // 
-            this.numRequired.Enabled = false;
-            this.numRequired.Location = new System.Drawing.Point(21, 111);
-            this.numRequired.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.numRequired.Minimum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            -2147483648});
-            this.numRequired.Name = "numRequired";
-            this.numRequired.Size = new System.Drawing.Size(98, 30);
-            this.numRequired.TabIndex = 9;
+            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.ForeColor = System.Drawing.Color.Indigo;
+            this.textBox4.Location = new System.Drawing.Point(6, 154);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textBox4.Size = new System.Drawing.Size(135, 27);
+            this.textBox4.TabIndex = 22;
+            this.textBox4.Text = "0";
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
             // 
-            // numDiscount
+            // textBox3
             // 
-            this.numDiscount.Location = new System.Drawing.Point(21, 74);
-            this.numDiscount.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.numDiscount.Minimum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            -2147483648});
-            this.numDiscount.Name = "numDiscount";
-            this.numDiscount.Size = new System.Drawing.Size(98, 30);
-            this.numDiscount.TabIndex = 9;
-            this.numDiscount.ValueChanged += new System.EventHandler(this.NumDiscount_ValueChanged);
+            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox3.Enabled = false;
+            this.textBox3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox3.Location = new System.Drawing.Point(6, 113);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textBox3.Size = new System.Drawing.Size(135, 27);
+            this.textBox3.TabIndex = 21;
+            this.textBox3.Text = "0";
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
             // 
-            // numTotal
+            // textBox2
             // 
-            this.numTotal.Enabled = false;
-            this.numTotal.Location = new System.Drawing.Point(21, 36);
-            this.numTotal.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.numTotal.Minimum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            -2147483648});
-            this.numTotal.Name = "numTotal";
-            this.numTotal.Size = new System.Drawing.Size(98, 30);
-            this.numTotal.TabIndex = 9;
-            this.numTotal.ValueChanged += new System.EventHandler(this.NumTotal_ValueChanged);
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.ForeColor = System.Drawing.Color.Maroon;
+            this.textBox2.Location = new System.Drawing.Point(6, 71);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textBox2.Size = new System.Drawing.Size(135, 27);
+            this.textBox2.TabIndex = 20;
+            this.textBox2.Text = "0";
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
-            // numPayed
+            // textBox1
             // 
-            this.numPayed.Location = new System.Drawing.Point(21, 155);
-            this.numPayed.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.numPayed.Minimum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            -2147483648});
-            this.numPayed.Name = "numPayed";
-            this.numPayed.Size = new System.Drawing.Size(98, 30);
-            this.numPayed.TabIndex = 9;
-            this.numPayed.ValueChanged += new System.EventHandler(this.NumPayed_ValueChanged);
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Enabled = false;
+            this.textBox1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.Navy;
+            this.textBox1.Location = new System.Drawing.Point(6, 35);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textBox1.Size = new System.Drawing.Size(135, 27);
+            this.textBox1.TabIndex = 19;
+            this.textBox1.Text = "0";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // label11
             // 
@@ -420,7 +396,7 @@
             this.btnNewReservation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewReservation.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewReservation.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnNewReservation.Location = new System.Drawing.Point(6, 484);
+            this.btnNewReservation.Location = new System.Drawing.Point(145, 484);
             this.btnNewReservation.Name = "btnNewReservation";
             this.btnNewReservation.Size = new System.Drawing.Size(94, 37);
             this.btnNewReservation.TabIndex = 22;
@@ -431,11 +407,11 @@
             // btnAddReservation
             // 
             this.btnAddReservation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAddReservation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            this.btnAddReservation.BackColor = System.Drawing.Color.Crimson;
             this.btnAddReservation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddReservation.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddReservation.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnAddReservation.Location = new System.Drawing.Point(145, 484);
+            this.btnAddReservation.Location = new System.Drawing.Point(6, 484);
             this.btnAddReservation.Name = "btnAddReservation";
             this.btnAddReservation.Size = new System.Drawing.Size(94, 37);
             this.btnAddReservation.TabIndex = 23;
@@ -572,11 +548,6 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numRemaining)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numRequired)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numDiscount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numTotal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numPayed)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -616,10 +587,10 @@
         private System.Windows.Forms.Button btnUp;
         private System.Windows.Forms.Button btnDown;
         private System.Windows.Forms.Button btnDeleteVisit;
-        private System.Windows.Forms.NumericUpDown numPayed;
-        private System.Windows.Forms.NumericUpDown numRemaining;
-        private System.Windows.Forms.NumericUpDown numRequired;
-        private System.Windows.Forms.NumericUpDown numDiscount;
-        private System.Windows.Forms.NumericUpDown numTotal;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

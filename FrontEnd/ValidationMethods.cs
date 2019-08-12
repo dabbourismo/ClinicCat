@@ -36,6 +36,13 @@ namespace ClinicCat.FrontEnd
                 txtbox.Text = String.Empty;
             }
         }
+        public static void ClearTextBoxesNumbers(List<TextBox> textBoxlist)
+        {
+            foreach (TextBox txtbox in textBoxlist)
+            {
+                txtbox.Text = "0";
+            }
+        }
         public static void Enable_DisableTextBoxes(List<TextBox> textBoxlist, bool isEnabled)
         {
             if (isEnabled == true)

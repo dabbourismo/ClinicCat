@@ -45,15 +45,24 @@ namespace ClinicCat.BackEnd
         {
             try
             {
-                ExecuteNonQuery(@"insert into Visits (PatientID,Visit_Date,Visit_Type,Visit_Reserve_Time,
+                cm.CommandText = "Select ID from Visits where PatientID='" + patientID + "' and Visit_State!='3'";
+                cm.ExecuteScalar().ToString();
+                return false;
+            }
+            catch
+            {
+                try
+                {
+                    ExecuteNonQuery(@"insert into Visits (PatientID,Visit_Date,Visit_Type,Visit_Reserve_Time,
                                 Visit_IsPhone,Visit_ExtraServices,Visit_State,Required) 
                             values ('" + patientID + "','" + visitDate + "','" + visitType + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "','" + visitIsTelephone + "','" + visitExtraServices + "'," +
-                            "'" + visitState + "','" + required + "')");
-                return true;
-            }
-            catch (Exception)
-            {
-                throw;
+                                "'" + visitState + "','" + required + "')");
+                    return true;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
 
         }
