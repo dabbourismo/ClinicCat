@@ -54,6 +54,12 @@ namespace ClinicCat.FrontEnd.Payments
                 this.patientID = patientID;
                 numRequired.Value = get_Required_Payment(visitID.Value);
                 numPreviousPayed.Value = get_Previous_Payment(visitID.Value);
+                cmbxDirection.SelectedIndex = 1;
+                txtPersonName.Text = Patient.getPatientName_By_ID(patientID.Value);
+                txtPersonName.Enabled = false;
+                cmbxDirection.Enabled = false;
+                lblDirection.Visible = false;
+                numOtherPayed.Visible = false;
             }
 
 

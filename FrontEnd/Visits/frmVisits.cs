@@ -86,7 +86,7 @@ namespace ClinicCat.FrontEnd.Visits
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     DialogResult Dialog = MessageBox.Show("مريض غير موجود، هل تود اضافة هذا المريض الان؟", "تنبيه", MessageBoxButtons.YesNo);
                     if (Dialog == DialogResult.Yes)
@@ -119,7 +119,7 @@ namespace ClinicCat.FrontEnd.Visits
             {
 
                 if (Insert(int.Parse(txtPatientID.Text), dtpVisitDate.Value.ToString("yyyy-MM-dd"), visitType, chkIsPhone.Checked,
-                    additionalServices, visitState, Decimal.Parse(textBox1.Text)))
+                    additionalServices, visitState, Decimal.Parse(textBox3.Text)))
                 {
                     //0-insert payment
                     int visitID = Payment.Get_VisitID_for_Payment(int.Parse(txtPatientID.Text));
@@ -233,6 +233,8 @@ namespace ClinicCat.FrontEnd.Visits
             cmbxVisitType.SelectedIndex = 0;
             ValidationMethods.ClearCheckedListBoxSelection(clbAdditionalServices);
             ValidationMethods.ClearTextBoxesNumbers(new List<TextBox>() { textBox2, textBox4, textBox5 });
+            VisitsLogic.CalculateTotalRequired(cmbxVisitType, textBox1, clbAdditionalServices);
+
         }
         //calculate required
 

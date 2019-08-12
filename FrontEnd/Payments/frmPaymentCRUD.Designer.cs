@@ -57,7 +57,7 @@
             // 
             this.lblRequired.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRequired.AutoSize = true;
-            this.lblRequired.Location = new System.Drawing.Point(548, 11);
+            this.lblRequired.Location = new System.Drawing.Point(548, 21);
             this.lblRequired.Name = "lblRequired";
             this.lblRequired.Size = new System.Drawing.Size(70, 22);
             this.lblRequired.TabIndex = 18;
