@@ -67,13 +67,14 @@ namespace ClinicCat.BackEnd
                 {
                     if (string.IsNullOrEmpty(visitScanTime))
                     {
-                        ExecuteNonQuery(@"update Visits set Visit_State='3', Visit_Next_Notes='" + nextVisitNotes + "',Visit_Current_Notes='" + currentVisitNotes + "',Priority=NULL where ID='" + visitID + "'");
+                        ExecuteNonQuery(@"update Visits set Visit_State='3', Visit_Next_Notes='" + nextVisitNotes + "', Visit_Current_Notes='" + currentVisitNotes + "', Priority = null where ID='" + visitID + "'");
                         return true;
 
                     }
                     else
                     {
-                        ExecuteNonQuery(@"update Visits set Visit_State='3', Visit_Next_Notes='" + nextVisitNotes + "',Visit_Current_Notes='" + currentVisitNotes + "',Visit_Scan_Time='" + visitScanTime + "',Priority=NULL where ID='" + visitID + "'");
+                        ExecuteNonQuery(@"update Visits set Visit_State='3', Visit_Next_Notes='" + nextVisitNotes + "',Visit_Current_Notes='" + currentVisitNotes + "', Visit_Scan_Time='" + visitScanTime + "', Priority = null where ID='" + visitID + "'");
+
                         return true;
                     }
                 }
@@ -121,5 +122,28 @@ new string[] { "ID", "Pat_WifeName", "Visit_Reserve_Time", "Visit_Reception_Time
                 throw;
             }
         }
+
+        public static string Get_LastVisit_Note(string patientName)
+        {
+            int patientID = Patient.getPatientID_By_Name(patientName);
+            try
+            {
+                int visitID = ExecuteScalar<int>(@"select MAX(ID) from Visits where (PatientID='" + patientID + "') and (Visit_State='3') ");
+                if (visitID != 0)
+                {
+                    return ExecuteScalar<string>(@"select Visit_Next_Notes from Visits where ID='" + visitID + "'");
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
     }
 }

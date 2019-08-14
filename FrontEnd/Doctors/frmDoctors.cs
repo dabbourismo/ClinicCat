@@ -96,7 +96,7 @@ namespace ClinicCat.FrontEnd.Doctors
 
         private void BtnAddPrescription_Click(object sender, EventArgs e)
         {
-            
+
         }
         private void BtnAddScans_Click(object sender, EventArgs e)
         {
@@ -110,8 +110,8 @@ namespace ClinicCat.FrontEnd.Doctors
             {
                 new frmDisplayPictureAttachment(patientID).Show();
             }
-            
+
         }
-       
+
     }
 }

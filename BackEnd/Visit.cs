@@ -170,7 +170,7 @@ namespace ClinicCat.BackEnd
             {
                 
                 return ExecuteScalar<int>(@"SELECT 
-                            dbo.Visits.ID
+                            MAX(dbo.Visits.ID)
                             FROM dbo.Patients
                             INNER JOIN
                             dbo.Visits ON dbo.Patients.ID=dbo.Visits.PatientID where (Patients.Pat_WifeName='" + patientName + "')");

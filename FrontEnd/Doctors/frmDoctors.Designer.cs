@@ -67,8 +67,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.btnEnterPatient);
             this.groupBox2.Controls.Add(this.listbxWaitingQueue);
@@ -84,9 +83,7 @@
             // 
             // btnEnterPatient
             // 
-            this.btnEnterPatient.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEnterPatient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEnterPatient.BackColor = System.Drawing.Color.Crimson;
             this.btnEnterPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnterPatient.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -102,7 +99,8 @@
             // 
             // listbxWaitingQueue
             // 
-            this.listbxWaitingQueue.Dock = System.Windows.Forms.DockStyle.Top;
+            this.listbxWaitingQueue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+| System.Windows.Forms.AnchorStyles.Right)));
             this.listbxWaitingQueue.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listbxWaitingQueue.FormattingEnabled = true;
             this.listbxWaitingQueue.ItemHeight = 22;
@@ -148,6 +146,7 @@
             // 
             // btnPreviousVisits
             // 
+            this.btnPreviousVisits.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPreviousVisits.BackColor = System.Drawing.Color.Crimson;
             this.btnPreviousVisits.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnPreviousVisits.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -162,6 +161,7 @@
             // 
             // btnShowDetails
             // 
+            this.btnShowDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnShowDetails.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
             this.btnShowDetails.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnShowDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -240,6 +240,7 @@
             // 
             // label11
             // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(555, 39);
             this.label11.Name = "label11";
@@ -249,6 +250,7 @@
             // 
             // label10
             // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(525, 76);
             this.label10.Name = "label10";
@@ -267,6 +269,7 @@
             // 
             // label3
             // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(84, 26);
             this.label3.Name = "label3";
@@ -276,9 +279,8 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox4.Controls.Add(this.txtNextVisitNotes);
             this.groupBox4.Controls.Add(this.txtCurrentVisitNotes);
             this.groupBox4.Controls.Add(this.label3);
@@ -294,7 +296,7 @@
             // 
             // txtNextVisitNotes
             // 
-            this.txtNextVisitNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtNextVisitNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.txtNextVisitNotes.Location = new System.Drawing.Point(6, 51);
             this.txtNextVisitNotes.Multiline = true;
@@ -304,7 +306,7 @@
             // 
             // txtCurrentVisitNotes
             // 
-            this.txtCurrentVisitNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtCurrentVisitNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCurrentVisitNotes.Location = new System.Drawing.Point(332, 51);
             this.txtCurrentVisitNotes.Multiline = true;
@@ -314,8 +316,7 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox5.Controls.Add(this.dtpReceptionTime);
             this.groupBox5.Controls.Add(this.dtpReserveTime);
             this.groupBox5.Controls.Add(this.chkEnableScanTime);
@@ -350,9 +351,7 @@
             // 
             // dtpReserveTime
             // 
-            this.dtpReserveTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpReserveTime.CustomFormat = "yyyy-MM-dd";
+            this.dtpReserveTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left))); this.dtpReserveTime.CustomFormat = "yyyy-MM-dd";
             this.dtpReserveTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpReserveTime.Location = new System.Drawing.Point(356, 36);
             this.dtpReserveTime.Name = "dtpReserveTime";
@@ -363,6 +362,7 @@
             // 
             // chkEnableScanTime
             // 
+            this.chkEnableScanTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkEnableScanTime.AutoSize = true;
             this.chkEnableScanTime.Location = new System.Drawing.Point(286, 108);
             this.chkEnableScanTime.Name = "chkEnableScanTime";
@@ -373,8 +373,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -389,8 +388,7 @@
             // 
             // btnAddScans
             // 
-            this.btnAddScans.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddScans.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAddScans.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
             this.btnAddScans.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddScans.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -405,8 +403,7 @@
             // 
             // btnAddPrescription
             // 
-            this.btnAddPrescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddPrescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAddPrescription.BackColor = System.Drawing.Color.Crimson;
             this.btnAddPrescription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddPrescription.Font = new System.Drawing.Font("Tajawal", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -421,8 +418,7 @@
             // 
             // dtpScanTime
             // 
-            this.dtpScanTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpScanTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.dtpScanTime.CustomFormat = "yyyy-MM-dd";
             this.dtpScanTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpScanTime.Location = new System.Drawing.Point(307, 108);
@@ -434,6 +430,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(516, 114);
             this.label2.Name = "label2";

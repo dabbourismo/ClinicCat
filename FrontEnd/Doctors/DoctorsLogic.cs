@@ -41,7 +41,9 @@ namespace ClinicCat.FrontEnd.Doctors
                 txtPatientName.Text = containerList[1];
                 dtpReserveTime.Value = DateTime.Parse(containerList[2]);
                 dtpReceptionTime.Value = DateTime.Parse(containerList[3]);
-                txtCurrentVisitNotes.Text = containerList[4];
+                //ملاحظات الزيارة
+                txtCurrentVisitNotes.Text = Get_LastVisit_Note(name);
+                
                 cmbx.Text = containerList[5];
             }
 
