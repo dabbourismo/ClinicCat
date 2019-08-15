@@ -14,6 +14,7 @@ namespace ClinicCat.FrontEnd.Payments
         public frmPayments()
         {
             InitializeComponent();
+            ValidationMethods.OptimizeDataGridView(dataGridView1);
             dataGridView1.DataSource = getPayments();
         }
 

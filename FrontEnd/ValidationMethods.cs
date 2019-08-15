@@ -8,6 +8,18 @@ namespace ClinicCat.FrontEnd
 {
     public static class ValidationMethods
     {
+        public static void OptimizeDataGridView(DataGridView dgv)
+        {
+            dgv.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing; //>vip
+            dgv.ColumnHeadersVisible = false;
+        }
+        public static void DisapleFormControls(Control.ControlCollection ctrlCollection)
+        {
+            foreach (Control ctrl in ctrlCollection)
+            {
+                ctrl.Enabled = false;
+            }
+        }
         public static void ClearTextBoxes(Control.ControlCollection ctrlCollection)
         {
             foreach (Control ctrl in ctrlCollection)

@@ -14,6 +14,8 @@ namespace ClinicCat.FrontEnd.Categories
         public frmCategory()
         {
             InitializeComponent();
+            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing; //>vip
+            dataGridView1.ColumnHeadersVisible = false;
             this.dataGridView1.DataSource = getCategories();
             this.dataGridView1.Columns[0].Visible = false;
         }

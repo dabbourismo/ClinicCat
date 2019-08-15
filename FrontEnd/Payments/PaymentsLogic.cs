@@ -14,7 +14,10 @@ namespace ClinicCat.FrontEnd.Payments
             {
                 try
                 {
+                    dgv.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing; //>vip
+                    dgv.ColumnHeadersVisible = false;
                     dgv.DataSource = getPayments();
+                    dgv.ColumnHeadersVisible = true;
                     dgv.CurrentCell = dgv[1, dgv.Rows.Count - 1];
                     dgv.FirstDisplayedScrollingRowIndex = dgv.SelectedRows[0].Index;
                 }
@@ -27,7 +30,10 @@ namespace ClinicCat.FrontEnd.Payments
             if (dgv.SelectedRows.Count > 0)
             {
                 int Row = dgv.CurrentRow.Index;
+                dgv.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing; //>vip
+                dgv.ColumnHeadersVisible = false;
                 dgv.DataSource = getPayments();
+                dgv.ColumnHeadersVisible = true;
                 try
                 {
                     dgv.CurrentCell = dgv[1, Row];
@@ -42,7 +48,10 @@ namespace ClinicCat.FrontEnd.Payments
             {
                 if (string.IsNullOrEmpty(txtbx.Text))
                 {
+                    dgv.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing; //>vip
+                    dgv.ColumnHeadersVisible = false;
                     dgv.DataSource = getPayments();
+                    dgv.ColumnHeadersVisible = true;
                     dtpFrom.Value = DateTime.Now;
                     dtpTo.Value = DateTime.Now;
                 }
@@ -72,7 +81,10 @@ namespace ClinicCat.FrontEnd.Payments
                     {
                         //Delete(row.Cells[0].Value.ToString());
                         MessageBox.Show("تم مسح المصروف");
+                        dgv.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing; //>vip
+                        dgv.ColumnHeadersVisible = false;
                         dgv.DataSource = getPayments();
+                        dgv.ColumnHeadersVisible = true;
                         dgv.Focus();
                         try
                         {

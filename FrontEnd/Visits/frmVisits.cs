@@ -219,7 +219,7 @@ namespace ClinicCat.FrontEnd.Visits
                 }
                 else
                 {
-                    new frmPatientsCRUD(null, new List<string>(), int.Parse(txtPatientID.Text)).Show();
+                    new frmPatientsCRUD(null, new List<string>(), int.Parse(txtPatientID.Text),null).Show();
                 }
             }
             VisitsLogic.PatientInfo(new List<TextBox>() { txtPatientID, txtPatientName, txtPatientPhone });

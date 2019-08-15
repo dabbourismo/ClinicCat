@@ -25,7 +25,7 @@ namespace ClinicCat.FrontEnd.Patients
             cmbxCategoryName.DataSource = Category.getCategories_DropDownList();
         }
         //edit constructor
-        public frmPatientsCRUD(frmPatients owner, List<string> parameters, int? patientID)
+        public frmPatientsCRUD(frmPatients owner, List<string> parameters, int? patientID,string visitsDetails)
         {
             InitializeComponent();
             cmbxCategoryName.DataSource = Category.getCategories_DropDownList();
@@ -38,12 +38,21 @@ namespace ClinicCat.FrontEnd.Patients
                 details = Details(int.Parse(parameters[0]));
             }
             //في حالة التعديل من شاشة الحجز
-            if (patientID.HasValue)
+            if (patientID.HasValue && visitsDetails==null)
             {
                 this.patientID = patientID;
                 details = new List<string>();
                 details = Details(patientID.Value);
                 btnCRUD.Text = "(Enter) تعديل";
+            }
+            //في حالة عرض تفاصيل المريض في شاشة الزيارات
+            if (patientID.HasValue && visitsDetails == "الحجز")
+            {
+                this.patientID = patientID;
+                details = new List<string>();
+                details = Details(patientID.Value);
+                btnCRUD.Visible = false;
+                ValidationMethods.DisapleFormControls(this.Controls);
             }
             if (patientID.HasValue || parameters.Count > 0)
             {

@@ -87,7 +87,7 @@ namespace ClinicCat.FrontEnd.Waiting
             iScroll = iScroll + 1;
 
             int iLmt = strString.Length - iScroll;
-            if (iLmt < 180)
+            if (iLmt <= 180)
             {
                 iScroll = 0;
             }
