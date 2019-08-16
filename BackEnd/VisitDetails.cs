@@ -44,7 +44,7 @@ namespace ClinicCat.BackEnd
 
                 return GetDataTable(@"SELECT    
                         dbo.Visits.ID,
-                      dbo.Patients.ID AS [كود المريضة],
+                        dbo.Patients.ID AS [كود المريضة],
                         dbo.Patients.Pat_WifeName AS [اسم المريضة],
                         dbo.Visits.Visit_Date AS [تاريخ الزيارة],
                         Case When dbo.Visits.Visit_Type = 1 THEN 'كشف' ELSE 'اعادة' END AS [نوع الزيارة], 
@@ -69,7 +69,7 @@ namespace ClinicCat.BackEnd
 
                 return GetDataTable(@"SELECT    
                         dbo.Visits.ID,
-                      dbo.Patients.ID AS [كود المريضة],
+                        dbo.Patients.ID AS [كود المريضة],
                         dbo.Patients.Pat_WifeName AS [اسم المريضة],
                         dbo.Visits.Visit_Date AS [تاريخ الزيارة],
                         Case When dbo.Visits.Visit_Type = 1 THEN 'كشف' ELSE 'اعادة' END AS [نوع الزيارة], 
@@ -91,10 +91,9 @@ namespace ClinicCat.BackEnd
         {
             try
             {
-
                 return GetDataTable(@"SELECT    
                         dbo.Visits.ID,
-                      dbo.Patients.ID AS [كود المريضة],
+                        dbo.Patients.ID AS [كود المريضة],
                         dbo.Patients.Pat_WifeName AS [اسم المريضة],
                         dbo.Visits.Visit_Date AS [تاريخ الزيارة],
                         Case When dbo.Visits.Visit_Type = 1 THEN 'كشف' ELSE 'اعادة' END AS [نوع الزيارة], 
@@ -112,5 +111,42 @@ namespace ClinicCat.BackEnd
             }
 
         }
+        public static int getVisitType_By_VisitID(int visitID)
+        {
+            try
+            {
+                return ExecuteScalar<int>(@"select Visit_Type from Visits where ID='" + visitID + "'");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public static DateTime getVisitDate_By_VisitID(int visitID)
+        {
+            try
+            {
+                return ExecuteScalar<DateTime>(@"select Visit_Date from Visits where ID='" + visitID + "'");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public static decimal getRequired_By_VisitID(int visitID)
+        {
+            try
+            {
+                return ExecuteScalar<decimal>(@"select Required from Visits where ID='" + visitID + "'");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
     }
 }

@@ -12,7 +12,17 @@ namespace ClinicCat.BackEnd
         {
             containerlist = new List<string>();
         }
-
+        public static string getPatientPhone_By_ID(int patientID)
+        {
+            try
+            {
+                return ExecuteScalar<string>(@"select Pat_WifePhone from Patients where ID='" + patientID + "'");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         public static int getPatientID_By_Name(string patientName)
         {
             try

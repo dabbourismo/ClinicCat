@@ -325,5 +325,7 @@ namespace ClinicCat.FrontEnd.Visits
         {
             txtPayed.Text = txtRequired.Text;
         }
+
+       
     }
 }

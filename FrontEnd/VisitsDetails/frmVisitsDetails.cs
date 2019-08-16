@@ -54,7 +54,7 @@ namespace ClinicCat.FrontEnd.VisitsDetails
         {
             if (dataGridView1.Rows.Count == 0)
             {
-                MessageBox.Show("لا يوجد مرضى");
+                MessageBox.Show("لا يوجد زيارات");
             }
             else
             {
@@ -64,13 +64,38 @@ namespace ClinicCat.FrontEnd.VisitsDetails
                 }
                 else
                 {
-                    if (dataGridView1.SelectedRows.Count>0)
+                    if (dataGridView1.SelectedRows.Count > 0)
                     {
                         int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
                         DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
-                        new frmPatientsCRUD(null, new List<string>(),int.Parse(selectedRow.Cells[1].Value.ToString()), "الحجز").Show();
+                        new frmPatientsCRUD(null, new List<string>(), int.Parse(selectedRow.Cells[1].Value.ToString()), "الحجز").Show();
                     }
-                    
+
+                }
+            }
+        }
+        //تعديل
+        private void BtnEditVisit_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("لا يوجد زيارات");
+            }
+            else
+            {
+                if (Application.OpenForms.OfType<frmEditVisitsDetails>().Any())
+                {
+                    return;
+                }
+                else
+                {
+                    if (dataGridView1.SelectedRows.Count > 0)
+                    {
+                        int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
+                        DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+                        new frmEditVisitsDetails(this,int.Parse(selectedRow.Cells[0].Value.ToString()), int.Parse(selectedRow.Cells[1].Value.ToString())).Show();
+                    }
+
                 }
             }
         }

@@ -42,6 +42,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblNumberOfVisits = new System.Windows.Forms.Label();
             this.btnPatientInfo = new System.Windows.Forms.Button();
+            this.btnEditVisit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupbox1.SuspendLayout();
             this.SuspendLayout();
@@ -228,11 +229,26 @@
             this.btnPatientInfo.UseVisualStyleBackColor = false;
             this.btnPatientInfo.Click += new System.EventHandler(this.BtnPatientInfo_Click);
             // 
+            // btnEditVisit
+            // 
+            this.btnEditVisit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnEditVisit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            this.btnEditVisit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditVisit.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnEditVisit.Location = new System.Drawing.Point(231, 488);
+            this.btnEditVisit.Name = "btnEditVisit";
+            this.btnEditVisit.Size = new System.Drawing.Size(186, 37);
+            this.btnEditVisit.TabIndex = 35;
+            this.btnEditVisit.Text = "تعديل زيارة";
+            this.btnEditVisit.UseVisualStyleBackColor = false;
+            this.btnEditVisit.Click += new System.EventHandler(this.BtnEditVisit_Click);
+            // 
             // frmVisitsDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1060, 533);
+            this.Controls.Add(this.btnEditVisit);
             this.Controls.Add(this.btnPatientInfo);
             this.Controls.Add(this.lblNumberOfVisits);
             this.Controls.Add(this.label4);
@@ -266,5 +282,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblNumberOfVisits;
         private System.Windows.Forms.Button btnPatientInfo;
+        private System.Windows.Forms.Button btnEditVisit;
     }
 }

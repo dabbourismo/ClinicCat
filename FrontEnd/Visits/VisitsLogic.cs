@@ -70,7 +70,7 @@ namespace ClinicCat.FrontEnd.Visits
             SetSelection(index, listbox);
 
         }
-        public static void SetSelection(int index,ListBox listbox)
+        public static void SetSelection(int index, ListBox listbox)
         {
             if (index == 0)
             {
@@ -124,6 +124,14 @@ namespace ClinicCat.FrontEnd.Visits
             {
                 num.Text = Setting.getreExaminePrice().ToString(); ;
             }
+            foreach (string service in clb.CheckedItems)
+            {
+                num.Text = (Decimal.Parse(num.Text) + Service.getService_Price_by_Name(service)).ToString();
+            }
+        }
+        public static void CalculateTotalRequiredForEdit(TextBox num, CheckedListBox clb)
+        {
+            num.Text = "0";
             foreach (string service in clb.CheckedItems)
             {
                 num.Text = (Decimal.Parse(num.Text) + Service.getService_Price_by_Name(service)).ToString();

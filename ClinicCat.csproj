@@ -161,6 +161,12 @@
     </Compile>
     <Compile Include="FrontEnd\Settings\SettingsLogic.cs" />
     <Compile Include="FrontEnd\ValidationMethods.cs" />
+    <Compile Include="FrontEnd\VisitsDetails\frmEditVisitsDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\VisitsDetails\frmEditVisitsDetails.Designer.cs">
+      <DependentUpon>frmEditVisitsDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrontEnd\VisitsDetails\frmVisitsDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -227,6 +233,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrontEnd\Settings\frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrontEnd\VisitsDetails\frmEditVisitsDetails.resx">
+      <DependentUpon>frmEditVisitsDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrontEnd\VisitsDetails\frmVisitsDetails.resx">
       <DependentUpon>frmVisitsDetails.cs</DependentUpon>
